@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+   <script>
+  // كلمة المرور
+  var correctPassword = "napoli2026"; // غيّرها لما تريد
+  
+  // عند فتح الموقع
+  window.onload = function() {
+    var enteredPassword = prompt("أدخل كلمة المرور:");
+    if (enteredPassword !== correctPassword) {
+      document.body.innerHTML = "<h1 style='text-align:center;color:#C9A227;margin-top:20%;'>غير مصرح لك بالدخول</h1>";
+    }
+  };
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>المطعم الإيطالي · دليل الشيف الفاخر</title>
@@ -3137,15 +3150,3 @@ td.first{
  
 </body>
 </html>
- <script>
-  // كلمة المرور
-  var correctPassword = "napoli2026"; // غيّرها لما تريد
-  
-  // عند فتح الموقع
-  window.onload = function() {
-    var enteredPassword = prompt("أدخل كلمة المرور:");
-    if (enteredPassword !== correctPassword) {
-      document.body.innerHTML = "<h1 style='text-align:center;color:#C9A227;margin-top:20%;'>غير مصرح لك بالدخول</h1>";
-    }
-  };
-</script>
