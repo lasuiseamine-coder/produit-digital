@@ -1,0 +1,3140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المطعم الإيطالي · دليل الشيف الفاخر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Italianno&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#A8202E; --red-deep:#7E1620; --red-soft:#C8333F;
+  --green:#2D5F3F; --green-deep:#1A3D27;
+  --gold:#B8924F; --gold-light:#D4B574; --gold-deep:#8B6914;
+  --cream:#FAF5EB; --cream-2:#F2E9D5; --cream-3:#E8DBBF;
+  --paper:#FFFEFA; --ink:#1A1410; --ink-2:#3D2F22; --ink-3:#6B5642;
+  --border:#D9C9A8; --border-soft:#EBDDC4;
+  --shadow:0 30px 60px -20px rgba(45,30,15,.25);
+  --shadow-lg:0 50px 100px -30px rgba(45,30,15,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  direction:rtl;
+  line-height:1.85;
+  overflow-x:hidden;
+}
+ 
+/* Paper texture overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(184,146,79,.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168,32,46,.03) 0%, transparent 50%);
+  pointer-events:none;
+  z-index:1;
+}
+ 
+/* ═══ DECORATIVE ELEMENTS ═══ */
+.ornament-h{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:30px 0;
+}
+.ornament-h .line{
+  flex:1;
+  max-width:80px;
+  height:1px;
+  background:linear-gradient(to var(--dir,right),transparent,var(--gold));
+}
+.ornament-h .line.r{--dir:left}
+.ornament-h .symbol{
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:4px;
+}
+ 
+.flourish{
+  display:block;
+  margin:40px auto;
+  text-align:center;
+  color:var(--gold);
+  font-size:24px;
+  letter-spacing:12px;
+  opacity:.6;
+}
+ 
+/* ═══════════════════════════════════════
+   COVER PAGE
+═══════════════════════════════════════ */
+.cover{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at center, #FFF8E8 0%, var(--cream) 60%, var(--cream-2) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 40px;
+}
+ 
+.cover-bg-pattern{
+  position:absolute;
+  inset:0;
+  opacity:.04;
+  background-image:
+    repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 1px,transparent 50px),
+    repeating-linear-gradient(-45deg,var(--gold) 0,var(--gold) 1px,transparent 1px,transparent 50px);
+}
+ 
+.cover-frame{
+  position:absolute;
+  inset:50px;
+  border:1px solid var(--gold);
+  pointer-events:none;
+}
+.cover-frame::before{
+  content:'';
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(184,146,79,.4);
+}
+.cover-frame::after{
+  content:'';
+  position:absolute;
+  inset:16px;
+  border:1px solid rgba(184,146,79,.2);
+}
+ 
+.corner-orn{
+  position:absolute;
+  width:60px;
+  height:60px;
+  z-index:5;
+}
+.corner-orn.tl{top:35px;right:35px}
+.corner-orn.tr{top:35px;left:35px;transform:scaleX(-1)}
+.corner-orn.bl{bottom:35px;right:35px;transform:scaleY(-1)}
+.corner-orn.br{bottom:35px;left:35px;transform:scale(-1,-1)}
+ 
+.cover-inner{
+  position:relative;
+  z-index:3;
+  max-width:700px;
+  text-align:center;
+  padding:80px 60px;
+}
+ 
+.cover-italian-flag{
+  display:inline-flex;
+  width:60px;
+  height:5px;
+  margin-bottom:40px;
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+.cover-italian-flag span{flex:1}
+.cover-italian-flag span:nth-child(1){background:#008C45}
+.cover-italian-flag span:nth-child(2){background:#F4F5F0}
+.cover-italian-flag span:nth-child(3){background:#CD212A}
+ 
+.cover-eyebrow{
+  font-size:11px;
+  letter-spacing:10px;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin-bottom:30px;
+  text-transform:uppercase;
+}
+ 
+.cover-script{
+  font-family:'Italianno',cursive;
+  font-size:clamp(48px,7vw,80px);
+  color:var(--red);
+  line-height:1;
+  margin-bottom:20px;
+  font-weight:400;
+}
+ 
+.cover-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:clamp(64px,10vw,120px);
+  font-weight:900;
+  color:var(--ink);
+  line-height:.95;
+  margin-bottom:30px;
+  letter-spacing:-2px;
+}
+.cover-title .red{color:var(--red)}
+.cover-title .accent{
+  display:inline-block;
+  position:relative;
+}
+ 
+.cover-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:30px 0;
+}
+.cover-divider .line{
+  width:80px;
+  height:1px;
+  background:var(--gold);
+}
+.cover-divider .diamond{
+  width:8px;
+  height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+ 
+.cover-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(20px,2.5vw,28px);
+  color:var(--green-deep);
+  font-weight:500;
+  margin-bottom:50px;
+  line-height:1.5;
+}
+ 
+.cover-description{
+  font-size:16px;
+  color:var(--ink-2);
+  line-height:2;
+  max-width:480px;
+  margin:0 auto 50px;
+}
+ 
+.cover-features{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:24px;
+  margin-bottom:60px;
+}
+.cover-feat{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--gold-deep);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.cover-feat::before{
+  content:'';
+  width:4px;
+  height:4px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+ 
+.cover-author{
+  border-top:1px solid var(--gold);
+  border-bottom:1px solid var(--gold);
+  padding:20px 0;
+  display:inline-block;
+  margin-top:20px;
+}
+.cover-author-label{
+  font-size:10px;
+  letter-spacing:6px;
+  color:var(--gold-deep);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.cover-author-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--ink);
+  font-weight:600;
+  letter-spacing:3px;
+}
+ 
+/* ═══════════════════════════════════════
+   TOC
+═══════════════════════════════════════ */
+.toc{
+  padding:120px 80px;
+  background:var(--paper);
+  position:relative;
+}
+ 
+.section-header{
+  text-align:center;
+  margin-bottom:80px;
+}
+.section-eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:20px;
+  color:var(--gold-deep);
+  margin-bottom:14px;
+  letter-spacing:2px;
+}
+.section-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:clamp(44px,6vw,72px);
+  font-weight:800;
+  color:var(--ink);
+  line-height:1.05;
+  margin-bottom:24px;
+  letter-spacing:-1px;
+}
+.section-title .accent{color:var(--red)}
+.section-title .script{
+  font-family:'Italianno',cursive;
+  font-weight:400;
+  color:var(--red);
+  font-size:1.2em;
+  display:inline-block;
+  vertical-align:-5px;
+}
+ 
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  max-width:1000px;
+  margin:0 auto;
+}
+.toc-item{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:28px 32px;
+  background:linear-gradient(135deg,var(--cream) 0%,var(--paper) 100%);
+  border:1px solid var(--border);
+  border-radius:4px;
+  transition:all .4s ease;
+  position:relative;
+  overflow:hidden;
+}
+.toc-item::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:4px;
+  background:var(--red);
+}
+.toc-item::after{
+  content:'';
+  position:absolute;
+  inset:5px;
+  border:1px solid transparent;
+  transition:border-color .4s ease;
+  pointer-events:none;
+}
+.toc-item:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+.toc-item:hover::after{
+  border-color:rgba(184,146,79,.3);
+}
+.toc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:54px;
+  color:var(--red);
+  font-weight:700;
+  line-height:1;
+  min-width:60px;
+  font-style:italic;
+}
+.toc-h{
+  font-size:18px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+.toc-p{
+  font-size:13px;
+  color:var(--ink-3);
+  font-style:italic;
+}
+ 
+/* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+.section{
+  padding:140px 80px;
+  background:var(--cream);
+  position:relative;
+}
+.section-paper{background:var(--paper)}
+ 
+.section::before{
+  content:'';
+  position:absolute;
+  top:0;left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+}
+ 
+/* Chapter intro */
+.chapter-intro{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:80px;
+  align-items:center;
+  margin-bottom:100px;
+}
+.chapter-info{}
+.chapter-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:140px;
+  line-height:1;
+  color:var(--red);
+  opacity:.12;
+  font-weight:700;
+  font-style:italic;
+  margin-bottom:-40px;
+}
+.chapter-label{
+  display:inline-block;
+  padding:6px 20px;
+  background:linear-gradient(135deg,var(--red),var(--red-deep));
+  color:#fff;
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:24px;
+  box-shadow:0 4px 12px rgba(168,32,46,.3);
+}
+.chapter-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:clamp(48px,6vw,72px);
+  font-weight:900;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:28px;
+  letter-spacing:-1px;
+}
+.chapter-title .accent{color:var(--red)}
+.chapter-title .script{
+  font-family:'Italianno',cursive;
+  font-weight:400;
+  color:var(--green);
+  font-size:1.3em;
+  display:block;
+  margin-top:5px;
+}
+.chapter-lead{
+  font-size:18px;
+  color:var(--ink-2);
+  line-height:2;
+  margin-bottom:24px;
+}
+.chapter-lead.italic{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:22px;
+  color:var(--ink-2);
+}
+ 
+/* Illustration containers */
+.illustration-box{
+  position:relative;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(135deg,#FFF8E7 0%,#F5E6C8 100%);
+  aspect-ratio:1/1.1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.illustration-box::before{
+  content:'';
+  position:absolute;
+  top:20px;right:20px;bottom:20px;left:20px;
+  border:1px solid rgba(184,146,79,.4);
+  pointer-events:none;
+  z-index:3;
+}
+.illustration-box::after{
+  content:'';
+  position:absolute;
+  top:25px;right:25px;bottom:25px;left:25px;
+  border:1px solid rgba(184,146,79,.15);
+  pointer-events:none;
+  z-index:3;
+}
+.illustration-box svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.illustration-box .caption{
+  position:absolute;
+  bottom:30px;left:30px;right:30px;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:13px;
+  color:var(--ink-3);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  z-index:4;
+}
+ 
+/* Pull quote */
+.quote{
+  background:linear-gradient(135deg,var(--paper) 0%,var(--cream-2) 100%);
+  border:1px solid var(--border);
+  padding:48px 56px;
+  margin:60px 0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  font-style:italic;
+  color:var(--ink-2);
+  line-height:1.6;
+  text-align:center;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.quote::before{
+  content:'';
+  position:absolute;
+  top:15px;right:20px;bottom:15px;left:20px;
+  border-top:1px solid var(--gold);
+  border-bottom:1px solid var(--gold);
+  pointer-events:none;
+}
+.quote-mark{
+  font-family:'Italianno',cursive;
+  font-size:80px;
+  color:var(--red);
+  line-height:.5;
+  display:block;
+  margin-bottom:10px;
+}
+ 
+/* Subtitle */
+.subtitle{
+  font-family:'Tajawal',sans-serif;
+  font-size:42px;
+  font-weight:800;
+  color:var(--ink);
+  margin:80px 0 40px;
+  position:relative;
+  padding-right:30px;
+}
+.subtitle::before{
+  content:'';
+  position:absolute;
+  right:0;top:50%;
+  transform:translateY(-50%);
+  width:5px;
+  height:60%;
+  background:var(--red);
+}
+.subtitle .red{color:var(--red)}
+.subtitle .script{
+  font-family:'Italianno',cursive;
+  font-weight:400;
+  color:var(--gold-deep);
+  font-size:1.2em;
+}
+ 
+/* Cards */
+.cards-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  margin-bottom:50px;
+}
+.luxury-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:48px 44px;
+  position:relative;
+  transition:all .4s ease;
+  overflow:hidden;
+}
+.luxury-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(to right,var(--red),var(--gold));
+}
+.luxury-card.green::before{background:linear-gradient(to right,var(--green),var(--gold))}
+.luxury-card::after{
+  content:'';
+  position:absolute;
+  top:15px;left:15px;right:15px;bottom:15px;
+  border:1px solid transparent;
+  transition:border-color .4s ease;
+  pointer-events:none;
+}
+.luxury-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+.luxury-card:hover::after{
+  border-color:rgba(184,146,79,.2);
+}
+.card-icon{
+  font-size:48px;
+  margin-bottom:20px;
+  display:block;
+  filter:saturate(1.2);
+}
+.card-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:24px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.card-title-it{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:16px;
+  color:var(--gold-deep);
+  margin-bottom:16px;
+}
+.card-body{
+  font-size:15px;
+  color:var(--ink-2);
+  line-height:1.95;
+}
+ 
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  margin-bottom:50px;
+}
+.mini-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:32px 28px;
+  position:relative;
+  overflow:hidden;
+  transition:all .4s ease;
+}
+.mini-card::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:50px;height:50px;
+  background:linear-gradient(135deg,var(--red) 0%,var(--red) 50%,transparent 50%);
+  clip-path:polygon(100% 0,100% 100%,0 0);
+}
+.mini-card.green::before{
+  background:linear-gradient(135deg,var(--green) 0%,var(--green) 50%,transparent 50%);
+}
+.mini-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow);
+  border-color:var(--gold);
+}
+.mini-card .card-icon{font-size:38px;margin-bottom:14px}
+.mini-card .card-title{font-size:20px;margin-bottom:10px}
+.mini-card .card-body{font-size:14px}
+ 
+/* Two col with image */
+.text-image{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+  margin-bottom:80px;
+}
+.text-image.reverse{direction:ltr}
+.text-image.reverse > *{direction:rtl}
+ 
+/* Recipe */
+.recipe{
+  background:linear-gradient(135deg,var(--paper),var(--cream-2));
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:56px;
+  margin-bottom:32px;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.recipe::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(to right,var(--green) 0%,var(--green) 33%,var(--gold-light) 33%,var(--gold-light) 66%,var(--red) 66%);
+}
+.recipe::after{
+  content:'';
+  position:absolute;
+  top:25px;left:25px;right:25px;bottom:25px;
+  border:1px solid rgba(184,146,79,.2);
+  pointer-events:none;
+}
+.recipe-content{position:relative;z-index:2}
+.recipe-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-style:italic;
+}
+.recipe-title-sub{
+  font-family:'Italianno',cursive;
+  font-size:36px;
+  color:var(--red);
+  font-style:normal;
+}
+.amounts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px}
+.amounts-3{grid-template-columns:repeat(3,1fr)}
+.amount{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:24px;
+  position:relative;
+}
+.amount::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--red);
+}
+.amount.green::before{background:var(--green)}
+.amount-h{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:16px;
+  color:var(--red);
+  margin-bottom:16px;
+  display:block;
+  font-weight:600;
+}
+.amount-item{
+  font-size:14px;
+  color:var(--ink-2);
+  padding:8px 0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px dashed var(--border);
+}
+.amount-item:last-child{border:none}
+.dot{
+  width:7px;height:7px;
+  background:var(--red);
+  flex-shrink:0;
+  transform:rotate(45deg);
+}
+ 
+/* Steps */
+.steps{list-style:none;counter-reset:steps}
+.step{
+  display:flex;
+  gap:28px;
+  padding:24px 0;
+  border-bottom:1px solid var(--border-soft);
+  align-items:flex-start;
+}
+.step:last-child{border:none}
+.step-num{
+  min-width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--red),var(--red-deep));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:20px;
+  flex-shrink:0;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  box-shadow:0 6px 20px rgba(168,32,46,.25);
+  position:relative;
+}
+.step-num::after{
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+}
+.step-text{
+  font-size:16px;
+  color:var(--ink-2);
+  line-height:1.95;
+  padding-top:12px;
+}
+ 
+/* Boxes */
+.tip{
+  background:linear-gradient(135deg,#FFF5F0 0%,#FFEEE3 100%);
+  border:1px solid #F5C6A0;
+  border-right:5px solid var(--red);
+  border-radius:4px;
+  padding:32px 36px;
+  margin:32px 0;
+  position:relative;
+}
+.tip h4{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:26px;
+  font-weight:600;
+  color:var(--red-deep);
+  margin-bottom:18px;
+}
+.tip-item{
+  font-size:15px;
+  color:var(--ink-2);
+  line-height:1.95;
+  padding:6px 0;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.tip-item::before{
+  content:'❋';
+  color:var(--red);
+  flex-shrink:0;
+  margin-top:2px;
+}
+ 
+.success-box{
+  background:linear-gradient(135deg,#F0F5F0 0%,#E5EFE5 100%);
+  border:1px solid #B8D5BC;
+  border-right:5px solid var(--green);
+  border-radius:4px;
+  padding:32px 36px;
+  margin:32px 0;
+}
+.success-box h4{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:26px;
+  font-weight:600;
+  color:var(--green-deep);
+  margin-bottom:18px;
+}
+.success-item{
+  font-size:15px;
+  color:var(--ink-2);
+  padding:8px 0;
+  border-bottom:1px solid rgba(45,95,63,.12);
+  display:flex;
+  gap:12px;
+  line-height:1.85;
+}
+.success-item:last-child{border:none}
+.success-item::before{
+  content:'❋';
+  color:var(--green);
+  flex-shrink:0;
+  margin-top:2px;
+}
+ 
+/* Tags */
+.tags-section{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:40px;
+  margin-bottom:28px;
+  position:relative;
+}
+.tags-section::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:4px;
+  background:var(--gold);
+}
+.tags-title{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:28px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:24px;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+}
+.tags-title .small{
+  font-size:14px;
+  color:var(--gold-deep);
+  font-weight:500;
+  letter-spacing:2px;
+}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:10px 20px;
+  font-size:13px;
+  color:var(--ink-2);
+  font-weight:500;
+  transition:all .3s ease;
+}
+.tag:hover{
+  background:var(--red);
+  color:#fff;
+  border-color:var(--red);
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(168,32,46,.2);
+}
+ 
+/* Pizza grid */
+.pizza-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+  margin-bottom:32px;
+}
+.pizza{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:24px 28px;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  transition:all .35s ease;
+  position:relative;
+  overflow:hidden;
+}
+.pizza::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:0;height:100%;
+  background:linear-gradient(to left,rgba(168,32,46,.04),transparent);
+  transition:width .4s ease;
+}
+.pizza:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+  border-color:var(--gold);
+}
+.pizza:hover::before{width:100%}
+.pizza-emoji{
+  font-size:36px;
+  min-width:46px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.pizza-content{position:relative;z-index:2;flex:1}
+.pizza-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:22px;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:6px;
+}
+.pizza-ing{
+  font-size:13px;
+  color:var(--ink-3);
+  line-height:1.7;
+}
+ 
+/* Table */
+.table-wrap{
+  overflow-x:auto;
+  margin-bottom:32px;
+  border-radius:4px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+table{width:100%;border-collapse:collapse;background:var(--paper)}
+th{
+  background:linear-gradient(135deg,var(--red),var(--red-deep));
+  color:#fff;
+  padding:20px 26px;
+  font-size:13px;
+  font-weight:700;
+  text-align:right;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+td{
+  padding:20px 26px;
+  font-size:15px;
+  color:var(--ink-2);
+  border-bottom:1px solid var(--border-soft);
+}
+tbody tr:nth-child(even){background:var(--cream-2)}
+tbody tr:hover{background:var(--cream-3)}
+td.first{
+  color:var(--red);
+  font-weight:700;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:18px;
+}
+ 
+/* Equipment cards */
+.eq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:32px;
+  margin-bottom:50px;
+}
+.eq-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  transition:all .4s ease;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+.eq-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(to right,var(--red),var(--gold));
+  z-index:2;
+}
+.eq-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--gold);
+}
+.eq-img{
+  height:240px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(135deg,#FFF8E7,#F5E6C8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.eq-img svg{width:80%;height:80%}
+.eq-body{padding:32px 32px 28px;flex:1;display:flex;flex-direction:column;position:relative}
+.eq-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:22px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.eq-it{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:15px;
+  color:var(--gold-deep);
+  margin-bottom:16px;
+}
+.eq-desc{
+  font-size:14px;
+  color:var(--ink-2);
+  line-height:1.95;
+  margin-bottom:20px;
+  flex:1;
+}
+.eq-price{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
+.eq-price-label{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:13px;
+  color:var(--ink-3);
+}
+.eq-price-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  font-weight:700;
+  color:var(--red);
+  font-style:italic;
+}
+.eq-essential{
+  display:inline-block;
+  background:var(--gold);
+  color:#fff;
+  font-size:10px;
+  letter-spacing:1px;
+  padding:3px 10px;
+  border-radius:30px;
+  font-weight:700;
+  margin-right:8px;
+  vertical-align:middle;
+}
+ 
+/* Ingredient list */
+.ing-list{margin-top:20px}
+.ing-item{
+  padding:24px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  gap:22px;
+}
+.ing-item:last-child{border:none}
+.ing-marker{
+  width:10px;
+  background:linear-gradient(to bottom,var(--red),var(--gold));
+  border-radius:5px;
+  flex-shrink:0;
+}
+.ing-marker.green{background:linear-gradient(to bottom,var(--green),var(--gold))}
+.ing-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:8px;
+  font-style:italic;
+}
+.ing-desc{
+  font-size:15px;
+  color:var(--ink-2);
+  line-height:1.9;
+}
+ 
+/* Stats */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  margin-bottom:32px;
+}
+.stat{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:24px;
+  text-align:center;
+  position:relative;
+}
+.stat::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--red);
+}
+.stat-label{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:14px;
+  color:var(--ink-3);
+  margin-bottom:10px;
+}
+.stat-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;
+  color:var(--red);
+  font-weight:700;
+}
+ 
+/* Price summary */
+.price-summary{
+  background:linear-gradient(135deg,var(--paper),var(--cream-2));
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:50px;
+  margin:40px 0;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.price-summary::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(to right,var(--green),var(--gold),var(--red));
+}
+.price-summary h3{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:36px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:32px;
+  text-align:center;
+}
+.price-tiers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.price-tier{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:32px 28px;
+  text-align:center;
+  position:relative;
+  transition:all .4s ease;
+}
+.price-tier:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+.price-tier.featured{
+  border-color:var(--red);
+  border-width:2px;
+  transform:scale(1.05);
+  box-shadow:var(--shadow);
+}
+.price-tier.featured::before{
+  content:'★ الأكثر شيوعاً';
+  position:absolute;
+  top:-12px;left:50%;
+  transform:translateX(-50%);
+  background:var(--red);
+  color:#fff;
+  font-size:10px;
+  letter-spacing:2px;
+  padding:5px 14px;
+  border-radius:20px;
+  font-weight:700;
+}
+.price-tier-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:24px;
+  color:var(--ink);
+  margin-bottom:12px;
+  font-weight:600;
+}
+.price-tier-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  color:var(--red);
+  font-weight:700;
+  margin-bottom:8px;
+  font-style:italic;
+}
+.price-tier-desc{
+  font-size:13px;
+  color:var(--ink-3);
+  line-height:1.7;
+}
+ 
+/* Page footer */
+.page-num{
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink-3);
+  margin-top:100px;
+  padding-top:30px;
+  border-top:1px solid var(--border);
+  letter-spacing:3px;
+}
+ 
+/* Divider */
+.divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  padding:80px;
+  background:var(--cream);
+}
+.divider .line{
+  width:100px;
+  height:1px;
+  background:linear-gradient(to var(--dir,right),transparent,var(--gold));
+}
+.divider .line.r{--dir:left}
+.divider .diamond{
+  width:10px;height:10px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.divider .center{
+  font-family:'Italianno',cursive;
+  color:var(--red);
+  font-size:32px;
+}
+ 
+/* Responsive */
+@media(max-width:1024px){
+  .cover-inner{padding:60px 30px}
+  .chapter-intro,.text-image{grid-template-columns:1fr;gap:50px}
+  .cards-2{grid-template-columns:1fr}
+  .amounts,.amounts-3{grid-template-columns:1fr}
+  .price-tiers{grid-template-columns:1fr;gap:16px}
+  .price-tier.featured{transform:none}
+}
+@media(max-width:768px){
+  .section,.toc{padding:80px 24px}
+  .cover{padding:40px 20px}
+  .cover-frame{inset:25px}
+  .corner-orn{display:none}
+  .toc-grid{grid-template-columns:1fr}
+  .pizza-grid,.eq-grid,.cards-grid{grid-template-columns:1fr}
+  .subtitle{font-size:32px}
+  .chapter-title{font-size:42px}
+  .cover-title{font-size:54px}
+  .recipe{padding:32px 24px}
+  .luxury-card{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+ 
+<!-- ═══════════════════════════════════════
+     COVER
+═══════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-bg-pattern"></div>
+  <div class="cover-frame"></div>
+ 
+  <!-- Corner ornaments -->
+  <svg class="corner-orn tl" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+    <path d="M20 4 Q30 20 4 30" stroke="#B8924F" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-orn tr" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+    <path d="M20 4 Q30 20 4 30" stroke="#B8924F" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-orn bl" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+    <path d="M20 4 Q30 20 4 30" stroke="#B8924F" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-orn br" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+    <path d="M20 4 Q30 20 4 30" stroke="#B8924F" stroke-width="1" fill="none"/>
+  </svg>
+ 
+  <div class="cover-inner">
+    <div class="cover-italian-flag"><span></span><span></span><span></span></div>
+    <div class="cover-eyebrow">Il Manuale del Pizzaiolo Professionista</div>
+ 
+    <!-- Big pizza illustration -->
+    <svg viewBox="0 0 400 400" style="width:280px;height:280px;margin:0 auto 30px;display:block">
+      <defs>
+        <radialGradient id="pizzaG" cx="50%" cy="40%">
+          <stop offset="0%" stop-color="#F4C76A"/>
+          <stop offset="60%" stop-color="#D9923C"/>
+          <stop offset="100%" stop-color="#8B4513"/>
+        </radialGradient>
+        <radialGradient id="sauceG" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#D62828"/>
+          <stop offset="100%" stop-color="#9E1717"/>
+        </radialGradient>
+      </defs>
+ 
+      <!-- Decorative outer ring -->
+      <circle cx="200" cy="200" r="195" fill="none" stroke="#B8924F" stroke-width="1" opacity=".4"/>
+      <circle cx="200" cy="200" r="185" fill="none" stroke="#B8924F" stroke-width=".5" opacity=".3"/>
+ 
+      <!-- Pizza base (crust) -->
+      <circle cx="200" cy="200" r="170" fill="url(#pizzaG)"/>
+ 
+      <!-- Inner crust ring -->
+      <circle cx="200" cy="200" r="150" fill="none" stroke="#8B4513" stroke-width="2" opacity=".3"/>
+ 
+      <!-- Sauce -->
+      <circle cx="200" cy="200" r="140" fill="url(#sauceG)"/>
+ 
+      <!-- Mozzarella patches -->
+      <ellipse cx="160" cy="160" rx="32" ry="28" fill="#FAF5E6" opacity=".95"/>
+      <ellipse cx="240" cy="170" rx="28" ry="30" fill="#FAF5E6" opacity=".95"/>
+      <ellipse cx="180" cy="240" rx="34" ry="26" fill="#FAF5E6" opacity=".95"/>
+      <ellipse cx="250" cy="240" rx="26" ry="28" fill="#FAF5E6" opacity=".95"/>
+      <ellipse cx="200" cy="200" rx="20" ry="18" fill="#FAF5E6" opacity=".95"/>
+ 
+      <!-- Cheese highlights -->
+      <ellipse cx="155" cy="155" rx="10" ry="7" fill="#fff" opacity=".5"/>
+      <ellipse cx="235" cy="165" rx="8" ry="9" fill="#fff" opacity=".5"/>
+ 
+      <!-- Basil leaves -->
+      <g fill="#2D5F3F">
+        <path d="M 130 130 Q 120 120 130 110 Q 145 115 135 130 Z"/>
+        <path d="M 270 140 Q 280 130 285 145 Q 275 155 265 145 Z"/>
+        <path d="M 220 280 Q 230 270 235 285 Q 225 295 215 285 Z"/>
+        <path d="M 140 240 Q 130 250 145 260 Q 155 250 145 240 Z"/>
+        <path d="M 200 130 Q 210 120 218 132 Q 208 142 198 132 Z"/>
+      </g>
+ 
+      <!-- Crust bubbles/char -->
+      <g fill="#5C3317" opacity=".5">
+        <circle cx="50" cy="200" r="3"/>
+        <circle cx="350" cy="200" r="3"/>
+        <circle cx="200" cy="50" r="2.5"/>
+        <circle cx="200" cy="350" r="2.5"/>
+        <circle cx="100" cy="80" r="2"/>
+        <circle cx="305" cy="295" r="2"/>
+      </g>
+    </svg>
+ 
+    <div class="cover-script">Il Ristorante</div>
+    <h1 class="cover-title">المطعم<br><span class="red">الإيطالي</span></h1>
+ 
+    <div class="cover-divider">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+ 
+    <p class="cover-tagline">دليل الشيف المتكامل<br>لتأسيس مطعم بيتزا احترافي</p>
+ 
+    <p class="cover-description">
+      من الفكرة الأولى إلى أول يوم عمل<br>
+      كل ما تحتاجه لتبدأ مشروعك الإيطالي الناجح
+    </p>
+ 
+    <div class="cover-features">
+      <div class="cover-feat">المعدات الكاملة</div>
+      <div class="cover-feat">الأسعار بالدولار</div>
+      <div class="cover-feat">٢٥+ وصفة بيتزا</div>
+      <div class="cover-feat">أسرار النجاح</div>
+    </div>
+ 
+    <div class="cover-author">
+      <div class="cover-author-label">تأليف</div>
+      <div class="cover-author-name">الشيف أمين</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══════════════════════════════════════
+     TOC
+═══════════════════════════════════════ -->
+<section class="toc">
+  <div class="section-header">
+    <div class="section-eyebrow">Indice — الفهرس</div>
+    <h2 class="section-title">محتويات <span class="accent">الدليل</span></h2>
+    <div class="ornament-h">
+      <div class="line r"></div>
+      <div class="symbol">❋</div>
+      <div class="line"></div>
+    </div>
+  </div>
+ 
+  <div class="toc-grid">
+    <div class="toc-item"><div class="toc-num">I</div><div><div class="toc-h">فكرة المشروع</div><div class="toc-p">L'idea del Ristorante</div></div></div>
+    <div class="toc-item"><div class="toc-num">II</div><div><div class="toc-h">تاريخ البيتزا النابولية</div><div class="toc-p">Storia della Pizza Napoletana</div></div></div>
+    <div class="toc-item"><div class="toc-num">III</div><div><div class="toc-h">المعدات والتجهيزات</div><div class="toc-p">Attrezzature Professionali</div></div></div>
+    <div class="toc-item"><div class="toc-num">IV</div><div><div class="toc-h">المكونات الأساسية</div><div class="toc-p">Ingredienti Autentici</div></div></div>
+    <div class="toc-item"><div class="toc-num">V</div><div><div class="toc-h">تقنيات تحضير العجينة</div><div class="toc-p">Tecniche dell'Impasto</div></div></div>
+    <div class="toc-item"><div class="toc-num">VI</div><div><div class="toc-h">قائمة البيتزا الكاملة</div><div class="toc-p">Il Menu delle Pizze</div></div></div>
+    <div class="toc-item"><div class="toc-num">VII</div><div><div class="toc-h">وصفات المعكرونة</div><div class="toc-p">Ricette della Pasta</div></div></div>
+    <div class="toc-item"><div class="toc-num">VIII</div><div><div class="toc-h">العمل والنجاح</div><div class="toc-p">Il Lavoro e il Successo</div></div></div>
+  </div>
+</section>
+ 
+<div class="divider">
+  <div class="line r"></div>
+  <div class="diamond"></div>
+  <div class="center">~</div>
+  <div class="diamond"></div>
+  <div class="line"></div>
+</div>
+ 
+<!-- ═══════════════════════════════════════
+     CH1: PROJECT IDEA
+═══════════════════════════════════════ -->
+<section class="section">
+  <div class="chapter-intro">
+    <div class="chapter-info">
+      <div class="chapter-num">I</div>
+      <span class="chapter-label">Capitolo Primo · الفصل الأول</span>
+      <h2 class="chapter-title">فكرة <span class="accent">المشروع</span><span class="script">L'idea</span></h2>
+      <p class="chapter-lead italic">
+        البيتزا ليست مجرد طعام سريع — إنها تجربة ثقافية واقتصادية في آن واحد.
+      </p>
+      <p class="chapter-lead">
+        السوق العالمي للبيتزا ينمو باستمرار، والطلب عليها لا يتوقف في أي موسم. النجاح يعتمد على فهم نوع المطعم الذي تريد بناءه، لأن كل نوع يحتاج إلى استراتيجية مختلفة تماماً.
+      </p>
+    </div>
+    <div class="illustration-box">
+      <!-- Restaurant illustration -->
+      <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F5E6C8"/>
+            <stop offset="100%" stop-color="#E8D4A8"/>
+          </linearGradient>
+          <linearGradient id="wall" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#D9C9A8"/>
+            <stop offset="100%" stop-color="#B89770"/>
+          </linearGradient>
+        </defs>
+ 
+        <rect width="400" height="440" fill="url(#bg1)"/>
+ 
+        <!-- Floor -->
+        <rect x="0" y="320" width="400" height="120" fill="#8B6B4A"/>
+        <line x1="0" y1="320" x2="400" y2="320" stroke="#5C4520" stroke-width="2"/>
+ 
+        <!-- Wall pattern -->
+        <rect x="0" y="0" width="400" height="320" fill="url(#wall)"/>
+ 
+        <!-- Decorative arches -->
+        <path d="M 50 120 Q 50 60 120 60 Q 190 60 190 120 L 190 220 L 50 220 Z" fill="#C8333F" opacity=".15"/>
+        <path d="M 210 120 Q 210 60 280 60 Q 350 60 350 120 L 350 220 L 210 220 Z" fill="#C8333F" opacity=".15"/>
+ 
+        <!-- Hanging lamps -->
+        <line x1="120" y1="0" x2="120" y2="40" stroke="#5C4520" stroke-width="1.5"/>
+        <ellipse cx="120" cy="50" rx="20" ry="14" fill="#B8924F"/>
+        <ellipse cx="120" cy="50" rx="18" ry="12" fill="#F4C76A"/>
+        <circle cx="120" cy="65" r="8" fill="#FFE9A8" opacity=".8"/>
+ 
+        <line x1="280" y1="0" x2="280" y2="40" stroke="#5C4520" stroke-width="1.5"/>
+        <ellipse cx="280" cy="50" rx="20" ry="14" fill="#B8924F"/>
+        <ellipse cx="280" cy="50" rx="18" ry="12" fill="#F4C76A"/>
+        <circle cx="280" cy="65" r="8" fill="#FFE9A8" opacity=".8"/>
+ 
+        <!-- Wood-fired oven (focal) -->
+        <ellipse cx="200" cy="280" rx="80" ry="50" fill="#5C4520"/>
+        <ellipse cx="200" cy="270" rx="80" ry="50" fill="#8B6B4A"/>
+        <ellipse cx="200" cy="265" rx="65" ry="40" fill="#3D2817"/>
+        <ellipse cx="200" cy="265" rx="50" ry="30" fill="#A8202E"/>
+        <ellipse cx="200" cy="265" rx="40" ry="22" fill="#FF6B35"/>
+        <circle cx="200" cy="260" r="14" fill="#FFD23F"/>
+        <!-- Bricks pattern -->
+        <g stroke="#5C4520" stroke-width=".5" fill="none">
+          <path d="M 130 280 L 270 280"/>
+          <path d="M 130 290 L 270 290"/>
+          <path d="M 130 300 L 270 300"/>
+        </g>
+ 
+        <!-- Table on right -->
+        <rect x="290" y="340" width="80" height="6" fill="#3D2817"/>
+        <rect x="305" y="346" width="6" height="40" fill="#3D2817"/>
+        <rect x="350" y="346" width="6" height="40" fill="#3D2817"/>
+        <!-- Wine bottle -->
+        <rect x="320" y="310" width="8" height="30" fill="#2D5F3F"/>
+        <rect x="319" y="305" width="10" height="6" fill="#1A3D27"/>
+        <!-- Plate -->
+        <ellipse cx="345" cy="338" rx="14" ry="3" fill="#fff" opacity=".9"/>
+ 
+        <!-- Table on left -->
+        <rect x="30" y="340" width="80" height="6" fill="#3D2817"/>
+        <rect x="45" y="346" width="6" height="40" fill="#3D2817"/>
+        <rect x="90" y="346" width="6" height="40" fill="#3D2817"/>
+        <ellipse cx="70" cy="338" rx="14" ry="3" fill="#fff" opacity=".9"/>
+        <!-- Mini pizza on plate -->
+        <circle cx="70" cy="335" r="10" fill="#D9923C"/>
+        <circle cx="70" cy="335" r="8" fill="#A8202E"/>
+        <circle cx="67" cy="333" r="2" fill="#FAF5E6"/>
+        <circle cx="73" cy="336" r="2" fill="#FAF5E6"/>
+ 
+        <!-- Italian flag bunting -->
+        <g>
+          <path d="M 30 30 Q 200 50 370 30" stroke="#5C4520" stroke-width="1" fill="none"/>
+          <g transform="translate(80,38)"><rect width="6" height="14" fill="#2D5F3F"/><rect x="6" width="6" height="14" fill="#fff"/><rect x="12" width="6" height="14" fill="#A8202E"/></g>
+          <g transform="translate(160,48)"><rect width="6" height="14" fill="#2D5F3F"/><rect x="6" width="6" height="14" fill="#fff"/><rect x="12" width="6" height="14" fill="#A8202E"/></g>
+          <g transform="translate(240,48)"><rect width="6" height="14" fill="#2D5F3F"/><rect x="6" width="6" height="14" fill="#fff"/><rect x="12" width="6" height="14" fill="#A8202E"/></g>
+          <g transform="translate(310,38)"><rect width="6" height="14" fill="#2D5F3F"/><rect x="6" width="6" height="14" fill="#fff"/><rect x="12" width="6" height="14" fill="#A8202E"/></g>
+        </g>
+      </svg>
+      <div class="caption">— Trattoria Italiana —</div>
+    </div>
+  </div>
+ 
+  <div class="quote">
+    <span class="quote-mark">"</span>
+    عندما نتحدث عن مطعم إيطالي، فإننا نتحدث عن مشروع يحمل في طياته إمكانيات متعددة. فالبيتزا ليست مجرد طعام، بل هي تجربة كاملة يأتي العميل لاستهلاكها.
+  </div>
+ 
+  <h2 class="subtitle">أنواع <span class="red">مطاعم البيتزا</span></h2>
+ 
+  <div class="cards-2">
+    <div class="luxury-card">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">المطعم الفاخر</div>
+      <div class="card-title-it">Ristorante di Lusso</div>
+      <p class="card-body">
+        يقدم تجربة طعام كاملة. العميل يأتي ليس فقط ليأكل بل ليقضي وقتاً ممتعاً. الموقع حاسم: منطقة سياحية، حي راقٍ، أو قرب معالم جذب. الديكور يعكس الأصالة الإيطالية، والخدمة على الطاولة مع اهتمام بالتفاصيل.
+        <br><br>
+        <strong style="color:var(--red)">الأسعار:</strong> أعلى — لكن هامش الربح أكبر، والعملاء يعودون للتجربة وليس فقط للوجبة.
+      </p>
+    </div>
+    <div class="luxury-card green">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">المطعم السريع</div>
+      <div class="card-title-it">Pizzeria Express</div>
+      <p class="card-body">
+        يعتمد على الكمية والسرعة. موقعه في الشارع التجاري المزدحم، قرب الجامعات أو مناطق المكاتب. العميل يريد بيتزا جيدة بسعر معقول وفي أسرع وقت. التركيز على التيك أواي والديليفري.
+        <br><br>
+        <strong style="color:var(--green)">الأسعار:</strong> منخفضة — لكن حجم المبيعات اليومية يعوض الفارق ويُضاعف الإيرادات.
+      </p>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">العوامل المشتركة <span class="red">للنجاح</span></h2>
+ 
+  <div class="cards-grid">
+    <div class="mini-card">
+      <span class="card-icon">🍞</span>
+      <div class="card-title">جودة العجينة</div>
+      <p class="card-body">السر الأول في أي بيتزا ناجحة. العميل يشعر بالفرق فوراً بين العجينة المحترفة والعادية.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">سرعة التجهيز</div>
+      <p class="card-body">تحافظ على رضا العملاء وتقلل الضغط على المطبخ. التنظيم الجيد يضاعف السرعة.</p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">📍</span>
+      <div class="card-title">الموقع المناسب</div>
+      <p class="card-body">السعر المناسب للموقع والجمهور يضمن استمرارية المبيعات ونمو قاعدة العملاء.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">📱</span>
+      <div class="card-title">التسويق الرقمي</div>
+      <p class="card-body">لم يعد اختيارياً — بل ضرورة للوجود والمنافسة. الصور الاحترافية تبيع نفسها.</p>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">خطة المشروع <span class="red">المالية</span></h2>
+  <div class="price-summary">
+    <h3>كم تحتاج لتبدأ؟</h3>
+    <div class="price-tiers">
+      <div class="price-tier">
+        <div class="price-tier-name">مطعم صغير</div>
+        <div class="price-tier-price">$15K — $30K</div>
+        <div class="price-tier-desc">تيك أواي وديليفري فقط<br>مساحة ٤٠-٦٠ م²</div>
+      </div>
+      <div class="price-tier featured">
+        <div class="price-tier-name">مطعم متوسط</div>
+        <div class="price-tier-price">$30K — $80K</div>
+        <div class="price-tier-desc">٢٠-٤٠ طاولة مع تيك أواي<br>الخيار الأكثر شيوعاً</div>
+      </div>
+      <div class="price-tier">
+        <div class="price-tier-name">مطعم فاخر</div>
+        <div class="price-tier-price">$80K+</div>
+        <div class="price-tier-desc">ديكور كامل وموقع راقي<br>تجربة شاملة</div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="page-num">— I · L'idea del Ristorante —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH2: HISTORY
+═══════════════════════════════════════ -->
+<section class="section section-paper">
+  <div class="chapter-intro">
+    <div class="illustration-box">
+      <!-- Naples / pizza Margherita illustration -->
+      <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F5D08C"/>
+            <stop offset="100%" stop-color="#F4A85C"/>
+          </linearGradient>
+          <radialGradient id="margG" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#F4C76A"/>
+            <stop offset="80%" stop-color="#D9923C"/>
+            <stop offset="100%" stop-color="#8B4513"/>
+          </radialGradient>
+        </defs>
+ 
+        <rect width="400" height="440" fill="url(#skyG)"/>
+ 
+        <!-- Mount Vesuvius -->
+        <path d="M 0 280 L 80 200 L 130 180 L 180 220 L 250 170 L 320 200 L 400 250 L 400 320 L 0 320 Z" fill="#5C4520" opacity=".5"/>
+        <path d="M 0 290 L 80 220 L 130 200 L 180 240 L 250 190 L 320 220 L 400 270 L 400 320 L 0 320 Z" fill="#3D2817" opacity=".6"/>
+        <!-- Volcano smoke -->
+        <ellipse cx="180" cy="170" rx="20" ry="10" fill="#fff" opacity=".5"/>
+        <ellipse cx="200" cy="155" rx="25" ry="12" fill="#fff" opacity=".4"/>
+        <ellipse cx="190" cy="140" rx="20" ry="8" fill="#fff" opacity=".3"/>
+ 
+        <!-- City silhouette -->
+        <g fill="#A8202E" opacity=".7">
+          <rect x="20" y="270" width="30" height="50"/>
+          <rect x="50" y="260" width="25" height="60"/>
+          <rect x="75" y="275" width="35" height="45"/>
+          <polygon points="55,260 62,250 70,260"/>
+          <rect x="340" y="275" width="30" height="45"/>
+          <rect x="370" y="265" width="25" height="55"/>
+        </g>
+ 
+        <!-- Plate -->
+        <ellipse cx="200" cy="370" rx="160" ry="30" fill="#fff"/>
+        <ellipse cx="200" cy="365" rx="155" ry="25" fill="#FAF5E6"/>
+ 
+        <!-- Pizza Margherita (signature) -->
+        <ellipse cx="200" cy="365" rx="140" ry="22" fill="#D9923C"/>
+        <ellipse cx="200" cy="362" rx="125" ry="18" fill="#A8202E"/>
+ 
+        <!-- White mozzarella spots -->
+        <ellipse cx="170" cy="358" rx="18" ry="6" fill="#FFFEFA"/>
+        <ellipse cx="220" cy="364" rx="20" ry="6" fill="#FFFEFA"/>
+        <ellipse cx="200" cy="368" rx="15" ry="5" fill="#FFFEFA"/>
+        <ellipse cx="250" cy="360" rx="16" ry="5" fill="#FFFEFA"/>
+        <ellipse cx="145" cy="365" rx="14" ry="5" fill="#FFFEFA"/>
+ 
+        <!-- Green basil leaves -->
+        <g fill="#2D5F3F">
+          <ellipse cx="180" cy="355" rx="6" ry="3" transform="rotate(-20 180 355)"/>
+          <ellipse cx="230" cy="358" rx="6" ry="3" transform="rotate(15 230 358)"/>
+          <ellipse cx="160" cy="362" rx="5" ry="3" transform="rotate(-10 160 362)"/>
+          <ellipse cx="210" cy="362" rx="5" ry="3"/>
+          <ellipse cx="245" cy="365" rx="5" ry="3" transform="rotate(20 245 365)"/>
+        </g>
+ 
+        <!-- Year banner -->
+        <g transform="translate(200,80)">
+          <rect x="-50" y="-20" width="100" height="40" fill="#A8202E"/>
+          <text x="0" y="5" font-family="Cormorant Garamond,serif" font-size="22" font-style="italic" fill="#fff" text-anchor="middle" font-weight="700">1889</text>
+        </g>
+      </svg>
+      <div class="caption">— La Pizza Margherita · Napoli —</div>
+    </div>
+    <div class="chapter-info">
+      <div class="chapter-num">II</div>
+      <span class="chapter-label">Capitolo Secondo · الفصل الثاني</span>
+      <h2 class="chapter-title">تاريخ <span class="accent">البيتزا</span><span class="script">La Storia</span></h2>
+      <p class="chapter-lead italic">
+        من أزقة نابولي القديمة إلى قائمة التراث العالمي لليونسكو.
+      </p>
+      <p class="chapter-lead">
+        البيتزا النابولية هي واحدة من أقدم وأشهر أنواع البيتزا في العالم. فهم هذا التاريخ يجعلك تُقدّر ما تصنعه وتحترم الحرفة — وهذا ما يميز الشيف الحقيقي عن غيره.
+      </p>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">رحلة البيتزا <span class="red">عبر التاريخ</span></h2>
+ 
+  <div class="cards-grid">
+    <div class="mini-card">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">الأصول القديمة</div>
+      <p class="card-body">يعود الخبز المسطح المغطى بالمكونات للعصور القديمة، حيث كان اليونانيون والرومان يأكلونه مع المكونات البسيطة.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🍅</span>
+      <div class="card-title">البداية في نابولي</div>
+      <p class="card-body">القرن ١٨ و١٩: أصبحت نابولي مركزاً لصنع البيتزا. كانت طعام الفقراء يستخدمون المتاح من طماطم وجبن.</p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">👑</span>
+      <div class="card-title">ولادة المارغريتا</div>
+      <p class="card-body">عام ١٨٨٩ صنع الشيف رافاييل إسبوزيتو بيتزا تكريماً للملكة مارغريتا بألوان العلم الإيطالي.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🌍</span>
+      <div class="card-title">الانتشار العالمي</div>
+      <p class="card-body">مع الهجرة الإيطالية، انتقلت البيتزا للعالم وأصبحت طعاماً محبوباً في كل أنحاء الكوكب.</p>
+    </div>
+  </div>
+ 
+  <div class="success-box">
+    <h4>🏆 اعتراف اليونسكو ٢٠١٧</h4>
+    <div class="success-item">أدرجت منظمة اليونسكو فن صناعة البيتزا النابولية في قائمة التراث الثقافي غير المادي للبشرية</div>
+    <div class="success-item">هذا يعني أن تعلمك لهذه الحرفة هو استمرار لإرث إنساني عمره قرون</div>
+    <div class="success-item">عند تسويق مطعمك، استخدم هذه القصة — العملاء يحبون قصة وراء الطعام</div>
+  </div>
+ 
+  <div class="page-num">— II · Storia della Pizza Napoletana —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH3: EQUIPMENT
+═══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Capitolo Terzo · الفصل الثالث</div>
+    <h2 class="section-title">المعدات <span class="accent">والتجهيزات</span></h2>
+    <div class="ornament-h">
+      <div class="line r"></div>
+      <div class="symbol">❋</div>
+      <div class="line"></div>
+    </div>
+    <p style="max-width:680px;margin:24px auto 0;color:var(--ink-2);font-size:17px;line-height:2;font-family:'Cormorant Garamond',serif;font-style:italic">
+      كل ما تحتاجه لبدء مطعمك — من الفرن إلى أصغر الأدوات — مع الأسعار التقريبية بالدولار.
+    </p>
+  </div>
+ 
+  <h2 class="subtitle">المعدات <span class="red">الأساسية</span></h2>
+ 
+  <div class="eq-grid">
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Wood-fired oven SVG -->
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="ovenFire" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#FFD23F"/>
+              <stop offset="40%" stop-color="#FF6B35"/>
+              <stop offset="100%" stop-color="#A8202E"/>
+            </radialGradient>
+          </defs>
+          <!-- Dome -->
+          <path d="M 30 140 Q 30 50 100 50 Q 170 50 170 140 Z" fill="#8B6B4A"/>
+          <path d="M 35 140 Q 35 55 100 55 Q 165 55 165 140 Z" fill="#A8825C" opacity=".5"/>
+          <!-- Brick lines -->
+          <g stroke="#5C4520" stroke-width="1" fill="none" opacity=".4">
+            <path d="M 35 80 Q 100 75 165 80"/>
+            <path d="M 35 100 Q 100 95 165 100"/>
+            <path d="M 35 120 Q 100 115 165 120"/>
+          </g>
+          <!-- Opening -->
+          <ellipse cx="100" cy="135" rx="50" ry="35" fill="#1A1410"/>
+          <ellipse cx="100" cy="130" rx="42" ry="28" fill="url(#ovenFire)"/>
+          <!-- Logs -->
+          <ellipse cx="80" cy="145" rx="12" ry="4" fill="#5C4520"/>
+          <ellipse cx="115" cy="148" rx="14" ry="4" fill="#3D2817"/>
+          <!-- Base -->
+          <rect x="20" y="155" width="160" height="35" fill="#5C4520"/>
+          <rect x="20" y="155" width="160" height="6" fill="#3D2817"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">🔥 فرن البيتزا الحجري <span class="eq-essential">أساسي</span></div>
+        <div class="eq-it">Forno a Legna</div>
+        <p class="eq-desc">القلب النابض للمطعم. يصل إلى ٤٥٠-٤٨٥ درجة مع قاعدة حجرية تضمن توزيع الحرارة. فرن الحطب هو الأفضل للنكهة الأصيلة المدخّنة.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$2,000 — $15,000</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Spiral mixer SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Base -->
+          <rect x="40" y="120" width="120" height="60" rx="4" fill="#999"/>
+          <rect x="40" y="120" width="120" height="8" fill="#777"/>
+          <!-- Bowl -->
+          <ellipse cx="100" cy="120" rx="55" ry="20" fill="#666"/>
+          <ellipse cx="100" cy="115" rx="55" ry="20" fill="#888"/>
+          <ellipse cx="100" cy="115" rx="48" ry="15" fill="#444"/>
+          <!-- Dough -->
+          <ellipse cx="100" cy="113" rx="40" ry="10" fill="#F4D9A0"/>
+          <!-- Top arm -->
+          <rect x="155" y="40" width="20" height="80" rx="2" fill="#777"/>
+          <rect x="80" y="40" width="95" height="20" rx="4" fill="#777"/>
+          <!-- Spiral hook -->
+          <path d="M 100 60 Q 80 75 100 90 Q 120 100 100 113" stroke="#444" stroke-width="4" fill="none"/>
+          <!-- Display -->
+          <rect x="48" y="135" width="30" height="20" rx="2" fill="#222"/>
+          <text x="63" y="148" font-size="8" fill="#FF6B35" text-anchor="middle">42°</text>
+          <!-- Buttons -->
+          <circle cx="100" cy="148" r="5" fill="#A8202E"/>
+          <circle cx="120" cy="148" r="5" fill="#2D5F3F"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">🌀 العجانة الحلزونية <span class="eq-essential">أساسي</span></div>
+        <div class="eq-it">Impastatrice a Spirale</div>
+        <p class="eq-desc">صُممت خصيصاً لعجين البيتزا. تخلط بكفاءة دون رفع حرارة العجين لحماية الجلوتين. ضرورية لكل مطعم يريد عجينة متماسكة ومرنة.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$800 — $3,000</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Prep table SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Top counter -->
+          <rect x="20" y="80" width="160" height="20" fill="#C5C5C5"/>
+          <rect x="20" y="80" width="160" height="4" fill="#999"/>
+          <!-- Ingredient containers row -->
+          <g>
+            <rect x="30" y="55" width="20" height="28" fill="#D9923C" stroke="#fff" stroke-width="1"/>
+            <rect x="52" y="55" width="20" height="28" fill="#A8202E" stroke="#fff" stroke-width="1"/>
+            <rect x="74" y="55" width="20" height="28" fill="#FAF5E6" stroke="#999" stroke-width="1"/>
+            <rect x="96" y="55" width="20" height="28" fill="#2D5F3F" stroke="#fff" stroke-width="1"/>
+            <rect x="118" y="55" width="20" height="28" fill="#F4C76A" stroke="#fff" stroke-width="1"/>
+            <rect x="140" y="55" width="20" height="28" fill="#1A1410" stroke="#fff" stroke-width="1"/>
+          </g>
+          <!-- Fridge body -->
+          <rect x="20" y="100" width="160" height="80" fill="#BBB"/>
+          <rect x="20" y="100" width="160" height="80" fill="none" stroke="#999" stroke-width="1"/>
+          <!-- Door dividers -->
+          <line x1="80" y1="100" x2="80" y2="180" stroke="#888" stroke-width="2"/>
+          <line x1="125" y1="100" x2="125" y2="180" stroke="#888" stroke-width="2"/>
+          <!-- Handles -->
+          <rect x="45" y="135" width="20" height="3" fill="#666"/>
+          <rect x="95" y="135" width="20" height="3" fill="#666"/>
+          <rect x="145" y="135" width="20" height="3" fill="#666"/>
+          <!-- Legs -->
+          <rect x="22" y="180" width="6" height="15" fill="#666"/>
+          <rect x="172" y="180" width="6" height="15" fill="#666"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">🧊 طاولة التحضير المبردة <span class="eq-essential">أساسي</span></div>
+        <div class="eq-it">Banco Pizza Refrigerato</div>
+        <p class="eq-desc">منصة العمل الأساسية. سطح جرانيت بارد + حوض علوي يحفظ المكونات + أدراج سفلية لكرات العجين.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$1,200 — $4,000</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Fridge SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Body -->
+          <rect x="55" y="20" width="90" height="170" rx="4" fill="#DDD"/>
+          <rect x="55" y="20" width="90" height="170" rx="4" fill="none" stroke="#999" stroke-width="2"/>
+          <!-- Top section -->
+          <line x1="55" y1="80" x2="145" y2="80" stroke="#999" stroke-width="2"/>
+          <!-- Handles -->
+          <rect x="135" y="40" width="6" height="30" rx="2" fill="#666"/>
+          <rect x="135" y="100" width="6" height="80" rx="2" fill="#666"/>
+          <!-- Display -->
+          <rect x="62" y="28" width="40" height="14" rx="2" fill="#1A1410"/>
+          <text x="82" y="38" font-size="7" fill="#FF6B35" text-anchor="middle" font-family="monospace">+4°C</text>
+          <!-- Ice/frost effect -->
+          <circle cx="80" cy="120" r="2" fill="#fff" opacity=".5"/>
+          <circle cx="95" cy="135" r="2" fill="#fff" opacity=".5"/>
+          <circle cx="110" cy="150" r="2" fill="#fff" opacity=".5"/>
+          <!-- Wheels -->
+          <circle cx="62" cy="195" r="6" fill="#444"/>
+          <circle cx="138" cy="195" r="6" fill="#444"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">❄️ ثلاجة التخمير البطيء <span class="eq-essential">أساسي</span></div>
+        <div class="eq-it">Frigorifero Lievitazione</div>
+        <p class="eq-desc">تتحكم في "نضج" العجين بحرارة ثابتة. تُطوّر نكهات عميقة وقوام خفيف. السر الحقيقي خلف جودة البيتزا.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$800 — $2,500</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Dough boxes SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Stack of boxes -->
+          <g>
+            <rect x="30" y="140" width="140" height="30" fill="#fff" stroke="#999" stroke-width="1.5"/>
+            <rect x="30" y="110" width="140" height="30" fill="#fff" stroke="#999" stroke-width="1.5"/>
+            <rect x="30" y="80" width="140" height="30" fill="#fff" stroke="#999" stroke-width="1.5"/>
+            <rect x="30" y="50" width="140" height="30" fill="#fff" stroke="#999" stroke-width="1.5"/>
+          </g>
+          <!-- Dough balls in top box -->
+          <circle cx="55" cy="65" r="9" fill="#F4D9A0"/>
+          <circle cx="80" cy="65" r="9" fill="#F4D9A0"/>
+          <circle cx="105" cy="65" r="9" fill="#F4D9A0"/>
+          <circle cx="130" cy="65" r="9" fill="#F4D9A0"/>
+          <circle cx="155" cy="65" r="9" fill="#F4D9A0"/>
+          <!-- Highlights -->
+          <circle cx="52" cy="62" r="2" fill="#fff" opacity=".7"/>
+          <circle cx="77" cy="62" r="2" fill="#fff" opacity=".7"/>
+          <circle cx="102" cy="62" r="2" fill="#fff" opacity=".7"/>
+          <circle cx="127" cy="62" r="2" fill="#fff" opacity=".7"/>
+          <circle cx="152" cy="62" r="2" fill="#fff" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">📦 صناديق العجين (×١٥)</div>
+        <div class="eq-it">Cassette per Impasto</div>
+        <p class="eq-desc">بيئة مثالية لكرات العجين أثناء التخمير الثاني. تمنع تسرب الهواء وتشقق العجينة. تُكدَّس في الثلاجة لتوفير المساحة.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">للصندوق</span>
+          <span class="eq-price-val">$10 — $20</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Digital scale SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Base -->
+          <rect x="30" y="100" width="140" height="50" rx="4" fill="#DDD"/>
+          <rect x="30" y="100" width="140" height="6" fill="#999"/>
+          <!-- Platform -->
+          <rect x="50" y="80" width="100" height="20" rx="2" fill="#BBB"/>
+          <!-- Display -->
+          <rect x="60" y="115" width="80" height="25" rx="2" fill="#1A1410"/>
+          <text x="100" y="133" font-size="14" fill="#FF6B35" text-anchor="middle" font-family="monospace" font-weight="700">985g</text>
+          <!-- Buttons -->
+          <circle cx="55" cy="155" r="4" fill="#A8202E"/>
+          <circle cx="100" cy="155" r="4" fill="#2D5F3F"/>
+          <circle cx="145" cy="155" r="4" fill="#B8924F"/>
+          <!-- Flour on top -->
+          <ellipse cx="100" cy="80" rx="35" ry="6" fill="#FAF5E6"/>
+          <ellipse cx="100" cy="78" rx="32" ry="5" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">⚖️ موازين القياس الرقمية</div>
+        <div class="eq-it">Bilance Digitali</div>
+        <p class="eq-desc">ميزان كبير للطحين والماء + ميزان دقيق للخميرة والملح. الثبات سر النجاح — أي اختلاف بالغرام يؤثر على التخمير.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$50 — $200</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Meat slicer SVG -->
+        <svg viewBox="0 0 200 200">
+          <!-- Base -->
+          <rect x="30" y="130" width="140" height="40" rx="3" fill="#DDD"/>
+          <!-- Vertical blade housing -->
+          <ellipse cx="70" cy="100" rx="40" ry="40" fill="#BBB"/>
+          <ellipse cx="70" cy="100" rx="35" ry="35" fill="#E0E0E0"/>
+          <ellipse cx="70" cy="100" rx="30" ry="30" fill="none" stroke="#999" stroke-width="1"/>
+          <!-- Blade lines -->
+          <g stroke="#999" stroke-width=".5" opacity=".5">
+            <line x1="70" y1="70" x2="70" y2="130"/>
+            <line x1="40" y1="100" x2="100" y2="100"/>
+            <line x1="50" y1="80" x2="90" y2="120"/>
+            <line x1="50" y1="120" x2="90" y2="80"/>
+          </g>
+          <!-- Salami being sliced -->
+          <ellipse cx="130" cy="105" rx="25" ry="14" fill="#A8202E"/>
+          <ellipse cx="130" cy="105" rx="22" ry="11" fill="#C8333F"/>
+          <!-- Spots -->
+          <circle cx="125" cy="103" r="1.5" fill="#fff"/>
+          <circle cx="135" cy="105" r="1.5" fill="#fff"/>
+          <circle cx="130" cy="108" r="1.5" fill="#fff"/>
+          <!-- Sliced piece -->
+          <ellipse cx="100" cy="115" rx="14" ry="3" fill="#C8333F"/>
+          <!-- Handle -->
+          <rect x="155" y="90" width="20" height="6" fill="#666"/>
+          <circle cx="170" cy="93" r="5" fill="#444"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">🔪 منشار اللحوم</div>
+        <div class="eq-it">Affettatrice</div>
+        <p class="eq-desc">لتقطيع السالامي والجامبون بدقة وسرعة عالية. ضروري في أوقات الذروة. شفرة من الستانلس ستيل عالية الجودة.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$300 — $800</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Freezer SVG -->
+        <svg viewBox="0 0 200 200">
+          <rect x="55" y="20" width="90" height="170" rx="4" fill="#E8F4F8"/>
+          <rect x="55" y="20" width="90" height="170" rx="4" fill="none" stroke="#7AAEC4" stroke-width="2"/>
+          <line x1="55" y1="80" x2="145" y2="80" stroke="#7AAEC4" stroke-width="2"/>
+          <rect x="135" y="40" width="6" height="30" rx="2" fill="#5288A0"/>
+          <rect x="135" y="100" width="6" height="80" rx="2" fill="#5288A0"/>
+          <rect x="62" y="28" width="40" height="14" rx="2" fill="#1A1410"/>
+          <text x="82" y="38" font-size="7" fill="#7AAEC4" text-anchor="middle" font-family="monospace">-18°C</text>
+          <!-- Snowflakes -->
+          <g fill="#7AAEC4" opacity=".6">
+            <text x="75" y="120" font-size="14">❄</text>
+            <text x="100" y="140" font-size="12">❄</text>
+            <text x="115" y="160" font-size="14">❄</text>
+            <text x="85" y="170" font-size="11">❄</text>
+          </g>
+          <circle cx="62" cy="195" r="6" fill="#444"/>
+          <circle cx="138" cy="195" r="6" fill="#444"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">❄️ فريزر سالب</div>
+        <div class="eq-it">Congelatore</div>
+        <p class="eq-desc">لتجميد اللحوم وفواكه البحر وصلصة البولونياز لكي لا تفسد. يحفظ الجودة لأسابيع ويوفر الكثير من الهدر.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$700 — $2,000</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="eq-card">
+      <div class="eq-img">
+        <!-- Gas range SVG -->
+        <svg viewBox="0 0 200 200">
+          <rect x="30" y="60" width="140" height="120" rx="3" fill="#999"/>
+          <rect x="30" y="60" width="140" height="20" fill="#777"/>
+          <!-- Burners -->
+          <g>
+            <circle cx="65" cy="100" r="18" fill="#1A1410"/>
+            <circle cx="65" cy="100" r="12" fill="#222"/>
+            <circle cx="65" cy="100" r="6" fill="#A8202E"/>
+            <circle cx="135" cy="100" r="18" fill="#1A1410"/>
+            <circle cx="135" cy="100" r="12" fill="#222"/>
+            <circle cx="65" cy="140" r="18" fill="#1A1410"/>
+            <circle cx="65" cy="140" r="12" fill="#222"/>
+            <circle cx="135" cy="140" r="18" fill="#1A1410"/>
+            <circle cx="135" cy="140" r="12" fill="#222"/>
+            <circle cx="135" cy="140" r="6" fill="#FF6B35"/>
+          </g>
+          <!-- Knobs -->
+          <g>
+            <circle cx="50" cy="70" r="4" fill="#444"/>
+            <circle cx="80" cy="70" r="4" fill="#444"/>
+            <circle cx="120" cy="70" r="4" fill="#444"/>
+            <circle cx="150" cy="70" r="4" fill="#444"/>
+          </g>
+          <!-- Oven door -->
+          <line x1="30" y1="160" x2="170" y2="160" stroke="#666" stroke-width="2"/>
+          <rect x="40" y="165" width="120" height="3" fill="#444"/>
+        </svg>
+      </div>
+      <div class="eq-body">
+        <div class="eq-title">🍳 فرن غاز للمعكرونة</div>
+        <div class="eq-it">Cucina a Gas</div>
+        <p class="eq-desc">لطهي الباستا وتحضير الصلصات والمكونات المختلفة. ٤-٦ عيون نار + فرن سفلي للأطباق الإيطالية الأخرى.</p>
+        <div class="eq-price">
+          <span class="eq-price-label">il prezzo</span>
+          <span class="eq-price-val">$500 — $2,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">معدات <span class="red">صغيرة ضرورية</span></h2>
+ 
+  <div class="cards-grid">
+    <div class="mini-card">
+      <span class="card-icon">🌡️</span>
+      <div class="card-title">مقياس حرارة ليزر</div>
+      <p class="card-body">لقياس حرارة الفرن الحجري. يضمن دخول البيتزا بالوقت المناسب. <strong style="color:var(--red)">$40 — $120</strong></p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🥄</span>
+      <div class="card-title">مجارف البيتزا</div>
+      <p class="card-body">مجرفة خشبية للإدخال + معدنية مثقبة للتدوير. أساسيات الفرن الحجري. <strong style="color:var(--red)">$80 — $200</strong></p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">🧹</span>
+      <div class="card-title">فرشاة تنظيف الفرن</div>
+      <p class="card-body">نحاسية لإزالة بقايا الدقيق المحروق بين كل بيتزا. تحافظ على نقاء المذاق. <strong style="color:var(--red)">$30 — $80</strong></p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🔁</span>
+      <div class="card-title">عجلة تقطيع البيتزا</div>
+      <p class="card-body">شفرة حادة من الستانلس ستيل للتقطيع السريع والنظيف. <strong style="color:var(--red)">$15 — $50</strong></p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">📡</span>
+      <div class="card-title">ميكروييف احترافي</div>
+      <p class="card-body">لتذويب المكونات المجمدة كفواكه البحر بسرعة دون فقدان الجودة. <strong style="color:var(--red)">$150 — $400</strong></p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🎂</span>
+      <div class="card-title">خلاط الحلويات</div>
+      <p class="card-body">لتحضير التيراميسو والحلويات الإيطالية التي تُميز مطعمك. <strong style="color:var(--red)">$200 — $700</strong></p>
+    </div>
+  </div>
+ 
+  <div class="success-box">
+    <h4>💰 ملخص التكاليف الإجمالية</h4>
+    <div class="success-item"><strong>مطعم صغير (تيك أواي):</strong> $15,000 — $30,000 شاملاً جميع المعدات</div>
+    <div class="success-item"><strong>مطعم متوسط (٢٠-٤٠ طاولة):</strong> $30,000 — $80,000 مع طاولات وكراسي</div>
+    <div class="success-item"><strong>مطعم فاخر:</strong> $80,000+ مع ديكور كامل ومعدات راقية</div>
+    <div class="success-item"><strong>ملاحظة:</strong> هذه الأرقام لا تشمل الإيجار، الديكور، التراخيص، والموظفين</div>
+  </div>
+ 
+  <div class="page-num">— III · Attrezzature Professionali —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH4: INGREDIENTS
+═══════════════════════════════════════ -->
+<section class="section section-paper">
+  <div class="section-header">
+    <div class="section-eyebrow">Capitolo Quarto · الفصل الرابع</div>
+    <h2 class="section-title">المكونات <span class="accent">الأصيلة</span></h2>
+    <div class="ornament-h">
+      <div class="line r"></div>
+      <div class="symbol">❋</div>
+      <div class="line"></div>
+    </div>
+  </div>
+ 
+  <!-- Flour -->
+  <div class="text-image">
+    <div class="illustration-box" style="aspect-ratio:1/1">
+      <!-- Flour bag SVG -->
+      <svg viewBox="0 0 300 300">
+        <defs>
+          <linearGradient id="bagG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#F4D9A0"/>
+            <stop offset="50%" stop-color="#FAF5E6"/>
+            <stop offset="100%" stop-color="#E8D4A8"/>
+          </linearGradient>
+        </defs>
+        <!-- Bag body -->
+        <path d="M 80 80 Q 70 70 80 60 L 220 60 Q 230 70 220 80 L 230 240 Q 230 260 210 260 L 90 260 Q 70 260 70 240 Z" fill="url(#bagG)"/>
+        <!-- Bag top fold -->
+        <path d="M 80 60 L 150 50 L 220 60 L 220 70 L 80 70 Z" fill="#D9C9A8"/>
+        <!-- Label -->
+        <rect x="100" y="100" width="100" height="80" fill="#fff" stroke="#A8202E" stroke-width="2"/>
+        <text x="150" y="125" font-family="Cormorant Garamond,serif" font-size="13" fill="#A8202E" text-anchor="middle" font-weight="700" font-style="italic">CAPUTO</text>
+        <text x="150" y="145" font-family="Cormorant Garamond,serif" font-size="24" fill="#1A1410" text-anchor="middle" font-weight="700">00</text>
+        <text x="150" y="165" font-family="Tajawal,sans-serif" font-size="9" fill="#3D2F22" text-anchor="middle">PIZZERIA</text>
+        <!-- Wheat decoration -->
+        <g stroke="#B8924F" stroke-width="1.5" fill="none">
+          <path d="M 90 200 Q 95 220 100 240"/>
+          <path d="M 92 210 L 88 205 M 92 210 L 96 205"/>
+          <path d="M 96 220 L 91 215 M 96 220 L 100 215"/>
+        </g>
+        <g stroke="#B8924F" stroke-width="1.5" fill="none">
+          <path d="M 210 200 Q 205 220 200 240"/>
+          <path d="M 208 210 L 212 205 M 208 210 L 204 205"/>
+          <path d="M 204 220 L 209 215 M 204 220 L 200 215"/>
+        </g>
+        <!-- Flour spilled -->
+        <ellipse cx="150" cy="270" rx="80" ry="8" fill="#FAF5E6"/>
+        <ellipse cx="150" cy="268" rx="70" ry="5" fill="#fff"/>
+        <!-- Flour bits -->
+        <circle cx="100" cy="275" r="2" fill="#fff"/>
+        <circle cx="200" cy="275" r="2" fill="#fff"/>
+        <circle cx="120" cy="272" r="1.5" fill="#FAF5E6"/>
+        <circle cx="180" cy="272" r="1.5" fill="#FAF5E6"/>
+      </svg>
+      <div class="caption">— Farina Tipo "00" —</div>
+    </div>
+    <div>
+      <h2 class="subtitle" style="margin-top:0">🌾 الطحين<br><span class="script">La Farina</span></h2>
+      <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:32px;font-family:'Cormorant Garamond',serif;font-style:italic">
+        الطحين هو عنصر أساسي يؤثر بشكل كبير على قوام العجينة وطعمها.
+      </p>
+      <div class="luxury-card green">
+        <div class="card-title">⭐ طحين "00" — Doppio Zero</div>
+        <div class="card-title-it">L'imperatore della farina</div>
+        <p class="card-body">
+          الأنسب والأكثر استخداماً في البيتزا الإيطالية الأصيلة. ملمسه ناعم جداً مع نسبة متوسطة من الجلوتين تجعل العجينة تتمدد دون تمزق. قدرته على امتصاص الماء ممتازة.
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Cheese -->
+  <div class="text-image reverse">
+    <div>
+      <h2 class="subtitle" style="margin-top:0">🧀 الأجبان<br><span class="script">I Formaggi</span></h2>
+      <div class="ing-list">
+        <div class="ing-item">
+          <div class="ing-marker"></div>
+          <div>
+            <div class="ing-name">Mozzarella di Bufala</div>
+            <div class="ing-desc">الأصيلة من حليب الجاموس. نكهة قوية وكريمية مع قوام طري ومرن. الاختيار الأول في المطاعم الفاخرة.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-marker green"></div>
+          <div>
+            <div class="ing-name">Fior di Latte</div>
+            <div class="ing-desc">موزاريلا من حليب البقر. أخف نكهة، تذوب بشكل ممتاز، مناسبة لمعظم أنواع البيتزا واقتصادية.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-marker"></div>
+          <div>
+            <div class="ing-name">Grana Padano</div>
+            <div class="ing-desc">يُبشر فوق البيتزا بعد الطهي. يُضيف نكهة عميقة ومركزة. لا غنى عنه في وصفات معينة.</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-marker green"></div>
+          <div>
+            <div class="ing-name">Gorgonzola</div>
+            <div class="ing-desc">جبن أزرق إيطالي قوي النكهة. للبيتزا ذات الأجبان الأربعة (4 Formaggi).</div>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-marker"></div>
+          <div>
+            <div class="ing-name">Taleggio</div>
+            <div class="ing-desc">جبن إيطالي طري بنكهة مميزة وقشرة ناعمة. يُستخدم في 4 Formaggi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="illustration-box" style="aspect-ratio:1/1">
+      <!-- Cheese SVG -->
+      <svg viewBox="0 0 300 300">
+        <!-- Mozzarella ball -->
+        <ellipse cx="100" cy="180" rx="60" ry="55" fill="#FAF5E6"/>
+        <ellipse cx="100" cy="180" rx="55" ry="50" fill="#fff"/>
+        <ellipse cx="85" cy="165" rx="15" ry="10" fill="#fff" opacity=".8"/>
+        <ellipse cx="120" cy="170" rx="10" ry="6" fill="#fff" opacity=".6"/>
+ 
+        <!-- Parmigiano wedge -->
+        <path d="M 180 100 L 270 130 L 250 200 L 170 180 Z" fill="#F4C76A"/>
+        <path d="M 180 100 L 270 130 L 250 200 L 170 180 Z" fill="none" stroke="#B8924F" stroke-width="2"/>
+        <!-- Grain texture -->
+        <g fill="#B8924F" opacity=".4">
+          <circle cx="200" cy="130" r="1.5"/>
+          <circle cx="220" cy="140" r="1.5"/>
+          <circle cx="240" cy="150" r="1.5"/>
+          <circle cx="210" cy="160" r="1.5"/>
+          <circle cx="230" cy="170" r="1.5"/>
+          <circle cx="195" cy="175" r="1.5"/>
+        </g>
+        <!-- Wood board -->
+        <rect x="40" y="240" width="220" height="20" fill="#8B6B4A"/>
+        <line x1="40" y1="245" x2="260" y2="245" stroke="#5C4520" stroke-width="1"/>
+      </svg>
+      <div class="caption">— Selezione di Formaggi —</div>
+    </div>
+  </div>
+ 
+  <!-- Tomato Sauce -->
+  <h2 class="subtitle">🍅 صلصة الطماطم <span class="red">النابولية</span></h2>
+ 
+  <div class="text-image">
+    <div class="illustration-box" style="aspect-ratio:1/1">
+      <!-- Tomato sauce SVG -->
+      <svg viewBox="0 0 300 300">
+        <!-- Bowl -->
+        <ellipse cx="150" cy="200" rx="120" ry="40" fill="#5C4520"/>
+        <ellipse cx="150" cy="190" rx="120" ry="40" fill="#8B6B4A"/>
+        <ellipse cx="150" cy="185" rx="110" ry="30" fill="#A8202E"/>
+        <ellipse cx="150" cy="185" rx="105" ry="28" fill="#C8333F"/>
+        <!-- Sauce highlights -->
+        <ellipse cx="130" cy="178" rx="20" ry="6" fill="#E94560" opacity=".6"/>
+        <ellipse cx="170" cy="190" rx="15" ry="4" fill="#7E1620" opacity=".4"/>
+        <!-- Basil leaves -->
+        <g fill="#2D5F3F">
+          <ellipse cx="140" cy="170" rx="12" ry="6" transform="rotate(-30 140 170)"/>
+          <line x1="135" y1="170" x2="148" y2="173" stroke="#1A3D27" stroke-width="1"/>
+          <ellipse cx="170" cy="175" rx="10" ry="5" transform="rotate(20 170 175)"/>
+          <line x1="165" y1="175" x2="175" y2="178" stroke="#1A3D27" stroke-width="1"/>
+        </g>
+        <!-- Spoon -->
+        <ellipse cx="200" cy="160" rx="12" ry="20" fill="#8B6B4A" transform="rotate(30 200 160)"/>
+        <rect x="215" y="100" width="6" height="50" fill="#5C4520" transform="rotate(30 218 125)"/>
+        <!-- Cherry tomatoes around -->
+        <g>
+          <circle cx="50" cy="80" r="18" fill="#A8202E"/>
+          <circle cx="50" cy="80" r="15" fill="#C8333F"/>
+          <circle cx="45" cy="75" r="3" fill="#E94560" opacity=".7"/>
+          <path d="M 50 62 Q 48 56 52 56 Q 56 60 50 65" fill="#2D5F3F"/>
+        </g>
+        <g>
+          <circle cx="250" cy="80" r="18" fill="#A8202E"/>
+          <circle cx="250" cy="80" r="15" fill="#C8333F"/>
+          <circle cx="245" cy="75" r="3" fill="#E94560" opacity=".7"/>
+          <path d="M 250 62 Q 248 56 252 56 Q 256 60 250 65" fill="#2D5F3F"/>
+        </g>
+        <g>
+          <circle cx="80" cy="60" r="14" fill="#A8202E"/>
+          <circle cx="80" cy="60" r="11" fill="#C8333F"/>
+        </g>
+        <g>
+          <circle cx="225" cy="55" r="14" fill="#A8202E"/>
+          <circle cx="225" cy="55" r="11" fill="#C8333F"/>
+        </g>
+      </svg>
+      <div class="caption">— Salsa di Pomodoro —</div>
+    </div>
+    <div>
+      <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:24px">
+        صلصة الطماطم أحد المكونات الأساسية لتحضير البيتزا. يجب أن تكون بسيطة ومصنوعة من مكونات طازجة وعالية الجودة.
+      </p>
+      <div class="recipe">
+        <div class="recipe-content">
+          <div class="recipe-title">🍅 المكونات <span class="recipe-title-sub">Ingredienti</span></div>
+          <div class="amount-item"><div class="dot"></div>٨٠٠ غ طماطم سان مارزانو</div>
+          <div class="amount-item"><div class="dot"></div>٣-٢ ملاعق زيت زيتون بكر</div>
+          <div class="amount-item"><div class="dot"></div>فص ثوم مفروم (اختياري)</div>
+          <div class="amount-item"><div class="dot"></div>ريحان طازج — أوراق ممزقة</div>
+          <div class="amount-item"><div class="dot"></div>ملح حسب الذوق</div>
+          <div class="amount-item"><div class="dot"></div>رشة سكر لتوازن الحموضة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">👨‍🍳 طريقة التحضير <span class="recipe-title-sub">Preparazione</span></div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text"><strong>تحضير الطماطم:</strong> إذا كانت معلبة اهرسها باليد أو شوكة. إذا طازجة قشّرها وأزل البذور ثم اهرسها للحصول على قوام ناعم.</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text"><strong>تسخين الزيت:</strong> سخّن زيت الزيتون في قدر كبير على نار متوسطة. أضف الثوم وسخّنه حتى يصبح عطرياً (احذر من احتراقه).</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text"><strong>إضافة الطماطم:</strong> أضف الطماطم المهروسة إلى القدر وقلّب جيداً مع الثوم وزيت الزيتون.</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text"><strong>التتبيل:</strong> أضف الملح حسب الذوق + رشة صغيرة من السكر إذا كانت الطماطم حمضية.</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text"><strong>الطهي:</strong> اطهِ على نار هادئة ٢٠-٣٠ دقيقة مع التحريك. لا تطهِ طويلاً لتحافظ على نكهتها الطازجة.</div></li>
+        <li class="step"><div class="step-num">VI</div><div class="step-text"><strong>الريحان:</strong> أضف أوراق الريحان الممزقة في النهاية فقط.</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <div class="success-box">
+    <h4>💡 نصائح الشيف</h4>
+    <div class="success-item"><strong>اختيار الطماطم:</strong> سان مارزانو هي الأفضل لنكهتها الحلوة وقوامها الجيد</div>
+    <div class="success-item"><strong>التحضير المسبق:</strong> يمكن تحضيرها مسبقاً وتخزينها أسبوعاً في الثلاجة</div>
+    <div class="success-item"><strong>البساطة:</strong> مكونات قليلة وعالية الجودة أفضل من كثيرة ورديئة — قانون المطبخ الإيطالي</div>
+  </div>
+ 
+  <h2 class="subtitle">باقي <span class="red">المكونات</span></h2>
+ 
+  <div class="tags-section">
+    <div class="tags-title">🥩 اللحوم <span class="small">— Le Carni</span></div>
+    <div class="tags">
+      <div class="tag">🦃 Jambon de Dinde</div>
+      <div class="tag">🌶️ Salami</div>
+      <div class="tag">🍗 Blanc de Poulet</div>
+      <div class="tag">🐴 Bresaola</div>
+      <div class="tag">🌶️ Nduja (حار)</div>
+      <div class="tag">🌿 Salsicca Fresca</div>
+      <div class="tag">🥓 Mortadella</div>
+    </div>
+  </div>
+ 
+  <div class="tags-section">
+    <div class="tags-title">🥦 الخضار <span class="small">— Le Verdure</span></div>
+    <div class="tags">
+      <div class="tag">🧅 Cipolla</div>
+      <div class="tag">🍄 Funghi</div>
+      <div class="tag">🫑 Peperoni</div>
+      <div class="tag">🍆 Melanzane</div>
+      <div class="tag">🥒 Zucchine</div>
+      <div class="tag">🌱 Carciofi</div>
+      <div class="tag">🫒 Olive Nere</div>
+      <div class="tag">🌿 Basilico</div>
+      <div class="tag">🌿 Origano</div>
+      <div class="tag">🥬 Rucola</div>
+      <div class="tag">🍅 Pomodorini</div>
+    </div>
+  </div>
+ 
+  <div class="tags-section">
+    <div class="tags-title">🐟 الأسماك وثمار البحر <span class="small">— Pesci e Frutti di Mare</span></div>
+    <div class="tags">
+      <div class="tag">🦐 Frutti di Mare</div>
+      <div class="tag">🦐 Gamberetti</div>
+      <div class="tag">🐟 Tonno</div>
+      <div class="tag">🐟 Acciughe</div>
+      <div class="tag">🍣 Salmone</div>
+      <div class="tag">🫒 Capperi</div>
+    </div>
+  </div>
+ 
+  <div class="tags-section">
+    <div class="tags-title">✨ المكونات الفاخرة <span class="small">— Premium</span></div>
+    <div class="tags">
+      <div class="tag">🍄 Salsa di Tartufo</div>
+      <div class="tag">🌿 Crema di Pistacchio</div>
+      <div class="tag">🥛 Burrata</div>
+      <div class="tag">🍍 Ananas</div>
+    </div>
+  </div>
+ 
+  <div class="page-num">— IV · Ingredienti Autentici —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH5: DOUGH
+═══════════════════════════════════════ -->
+<section class="section">
+  <div class="chapter-intro">
+    <div class="chapter-info">
+      <div class="chapter-num">V</div>
+      <span class="chapter-label">Capitolo Quinto · الفصل الخامس</span>
+      <h2 class="chapter-title">تقنيات <span class="accent">العجينة</span><span class="script">L'Impasto</span></h2>
+      <p class="chapter-lead italic">
+        العجينة هي روح البيتزا. إتقانها يُميزك عن كل منافسيك.
+      </p>
+      <p class="chapter-lead">
+        سنتعلم ٣ تقنيات أساسية: العجين المباشر (للمبتدئين)، عجينة البيغا (الأفضل والأصعب)، وعجين الفرن الكهربائي (المخصص للأفران الكهربائية).
+      </p>
+    </div>
+    <div class="illustration-box">
+      <!-- Dough balls SVG -->
+      <svg viewBox="0 0 400 440">
+        <defs>
+          <radialGradient id="doughG" cx="50%" cy="40%">
+            <stop offset="0%" stop-color="#FAEACB"/>
+            <stop offset="100%" stop-color="#D9C9A8"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="440" fill="url(#bg1)"/>
+ 
+        <!-- Wooden table -->
+        <rect x="0" y="280" width="400" height="160" fill="#8B6B4A"/>
+        <line x1="0" y1="280" x2="400" y2="280" stroke="#5C4520" stroke-width="2"/>
+        <g stroke="#5C4520" stroke-width=".5" opacity=".3">
+          <line x1="0" y1="320" x2="400" y2="318"/>
+          <line x1="0" y1="360" x2="400" y2="362"/>
+          <line x1="0" y1="400" x2="400" y2="398"/>
+        </g>
+ 
+        <!-- Flour dust -->
+        <g fill="#FAF5E6" opacity=".6">
+          <circle cx="50" cy="300" r="1"/>
+          <circle cx="80" cy="310" r="1.5"/>
+          <circle cx="120" cy="305" r="1"/>
+          <circle cx="350" cy="295" r="1.5"/>
+          <circle cx="320" cy="310" r="1"/>
+        </g>
+ 
+        <!-- Big dough ball center -->
+        <ellipse cx="200" cy="230" rx="100" ry="70" fill="#5C4520" opacity=".3"/>
+        <ellipse cx="200" cy="220" rx="100" ry="65" fill="url(#doughG)"/>
+        <ellipse cx="180" cy="200" rx="35" ry="20" fill="#fff" opacity=".5"/>
+        <ellipse cx="210" cy="195" rx="25" ry="12" fill="#fff" opacity=".3"/>
+ 
+        <!-- Small dough balls -->
+        <g>
+          <ellipse cx="70" cy="260" rx="35" ry="22" fill="#5C4520" opacity=".3"/>
+          <ellipse cx="70" cy="255" rx="35" ry="22" fill="url(#doughG)"/>
+          <ellipse cx="62" cy="247" rx="12" ry="6" fill="#fff" opacity=".4"/>
+        </g>
+        <g>
+          <ellipse cx="330" cy="260" rx="35" ry="22" fill="#5C4520" opacity=".3"/>
+          <ellipse cx="330" cy="255" rx="35" ry="22" fill="url(#doughG)"/>
+          <ellipse cx="322" cy="247" rx="12" ry="6" fill="#fff" opacity=".4"/>
+        </g>
+ 
+        <!-- Flour sprinkles -->
+        <g fill="#FAF5E6">
+          <circle cx="200" cy="180" r="2"/>
+          <circle cx="180" cy="200" r="1.5"/>
+          <circle cx="220" cy="190" r="1.5"/>
+          <circle cx="240" cy="210" r="1"/>
+          <circle cx="160" cy="225" r="1.5"/>
+        </g>
+ 
+        <!-- Italian flag pin -->
+        <g transform="translate(200,100)">
+          <rect x="-25" y="-15" width="50" height="30" fill="#fff" rx="2"/>
+          <rect x="-25" y="-15" width="17" height="30" fill="#2D5F3F"/>
+          <rect x="8" y="-15" width="17" height="30" fill="#A8202E"/>
+          <text x="0" y="35" font-family="Italianno,cursive" font-size="20" fill="#A8202E" text-anchor="middle">Impasto</text>
+        </g>
+      </svg>
+      <div class="caption">— L'arte dell'Impasto —</div>
+    </div>
+  </div>
+ 
+  <!-- Direct Dough -->
+  <h2 class="subtitle">I · العجين المباشر <span class="red">— Il Diretto</span></h2>
+  <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:32px;max-width:780px">
+    الأسهل والأكثر استخداماً من طرف المبتدئين. مناسب جداً في أوقات الضغط الشديد. يعطي نتائج ممتازة مع الاتباع الدقيق للخطوات.
+  </p>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">📏 المقادير <span class="recipe-title-sub">Dosi</span></div>
+      <div class="amounts">
+        <div class="amount">
+          <span class="amount-h">كمية كبيرة · للمطعم</span>
+          <div class="amount-item"><div class="dot"></div>٧ كغ ماء بارد</div>
+          <div class="amount-item"><div class="dot"></div>٩.٨٥٠ كغ طحين</div>
+          <div class="amount-item"><div class="dot"></div>٣٧٠ غ ملح</div>
+          <div class="amount-item"><div class="dot"></div>٢٠ غ خميرة</div>
+        </div>
+        <div class="amount green">
+          <span class="amount-h">كمية صغيرة · للتجربة</span>
+          <div class="amount-item"><div class="dot"></div>٧٠٠ غ ماء بارد</div>
+          <div class="amount-item"><div class="dot"></div>٩٨٥ غ طحين</div>
+          <div class="amount-item"><div class="dot"></div>٣٧ غ ملح</div>
+          <div class="amount-item"><div class="dot"></div>٢ غ خميرة</div>
+        </div>
+      </div>
+      <div class="recipe-title">👨‍🍳 طريقة التحضير <span class="recipe-title-sub">Preparazione</span></div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text"><strong>اليوم الأول:</strong> ضع الماء البارد في العجانة وأضف الخميرة — حرّك حتى تذوب تماماً</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text">شغّل العجانة في السرعة الأولى وأضف الطحين على ٣ مرات متتالية خلال ١٥ دقيقة</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text">قبل ٥ دقائق من الانتهاء: أضف الملح ثم انقل للسرعة الثانية ٥ دقائق</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text">اتركها مرتاحة ١٠ دقائق في العجانة دون تشغيل</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text">ضعها في علبة محكمة وأدخلها الثلاجة ٢٤ ساعة كاملة</div></li>
+        <li class="step"><div class="step-num">VI</div><div class="step-text"><strong>اليوم الثاني:</strong> أخرجها، أفرغ الغازات، شكّل كرات ٢٨٥ غ، وأعدها للثلاجة ٢٤ ساعة أخرى</div></li>
+        <li class="step"><div class="step-num">VII</div><div class="step-text"><strong>اليوم الثالث:</strong> أخرج العجين ٣ ساعات قبل بداية العمل في مكان دافئ</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <div class="tip">
+    <h4>⚠️ نصائح مهمة</h4>
+    <div class="tip-item">لا تعمل بالعجينة وهي باردة — سواء عند التشكيل أو بداية العمل</div>
+    <div class="tip-item">عندما تكون العجينة جاهزة، لا تُفرغ الغازات منها</div>
+    <div class="tip-item">اتبع جميع المراحل بالترتيب — كل خطوة لها سببها الخاص</div>
+  </div>
+ 
+  <div class="flourish">❋ ◆ ❋</div>
+ 
+  <!-- Biga -->
+  <h2 class="subtitle">II · عجينة البيغا <span class="red">— La Biga</span></h2>
+  <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:32px;max-width:780px">
+    من أفضل أنواع عجين البيتزا وفي نفس الوقت من أصعبها. تُنتج عجينة ذات نكهة عميقة جداً وقوام استثنائي. لا يُنصح للمبتدئين إلا بعد التمرن.
+  </p>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">📏 المقادير — ٣ مراحل</div>
+      <div class="amounts amounts-3">
+        <div class="amount">
+          <span class="amount-h">المرحلة الأولى</span>
+          <div class="amount-item"><div class="dot"></div>٢.٥ كغ طحين</div>
+          <div class="amount-item"><div class="dot"></div>١.١٢٥ لتر ماء</div>
+          <div class="amount-item"><div class="dot"></div>٢٠ غ خميرة</div>
+        </div>
+        <div class="amount">
+          <span class="amount-h">المرحلة الثانية</span>
+          <div class="amount-item"><div class="dot"></div>٥ كغ طحين</div>
+          <div class="amount-item"><div class="dot"></div>٣ لتر ماء</div>
+          <div class="amount-item"><div class="dot"></div>٢٠ غ خميرة</div>
+        </div>
+        <div class="amount">
+          <span class="amount-h">المرحلة الثالثة</span>
+          <div class="amount-item"><div class="dot"></div>١.٥ لتر ماء</div>
+          <div class="amount-item"><div class="dot"></div>٢٢٠ غ ملح</div>
+          <div class="amount-item"><div class="dot"></div>٨٠ مل زيت زيتون</div>
+        </div>
+      </div>
+      <div class="recipe-title">👨‍🍳 طريقة التحضير</div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text"><strong>المرحلة ١:</strong> ضع الماء والخميرة في العجانة، شغّلها ثم أضف الطحين تدريجياً. اعجن ٧ دقائق. ضعها في علبة كبيرة واتركها ١٩ ساعة في الغرفة.</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text"><strong>المرحلة ٢ (بعد يوم):</strong> قطّع عجين المرحلة الأولى، ضعه في العجانة مع ٣ لتر ماء و٢٠ غ خميرة، أضف ٥ كغ طحين واعجن ٧ دقائق.</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text"><strong>المرحلة ٣:</strong> شغّل العجانة ٨ دقائق وأضف ١.٥ لتر ماء تدريجياً، ثم ٢٢٠ غ ملح، ثم ٨٠ غ زيت زيتون حتى يختفي.</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text">شكّل كرة كبيرة على طاولة العمل، قطّعها وشكّل كرات ٢٨٥ غ وضعها في صناديق العجين</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text">أدخلها الثلاجة ليلة كاملة — اليوم التالي أخرجها ساعتين قبل بداية العمل</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <div class="tip">
+    <h4>⚠️ ملاحظات حول البيغا</h4>
+    <div class="tip-item">من أفضل عجائن البيتزا — لكن من أصعب التقنيات تحضيراً</div>
+    <div class="tip-item">لا يُنصح بها للمبتدئين قبل التمرن جيداً على العجين المباشر</div>
+    <div class="tip-item">لا تعمل بها وهي باردة — اتركها ساعتين في الغرفة قبل العمل</div>
+  </div>
+ 
+  <div class="flourish">❋ ◆ ❋</div>
+ 
+  <!-- Electric -->
+  <h2 class="subtitle">III · عجين الفرن <span class="red">الكهربائي</span></h2>
+  <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:32px;max-width:780px">
+    مصممة خصيصاً للطهي في الفرن الكهربائي (ليس فرن الحطب). تحتوي على زيت زيتون أكثر لتحقيق قوام مناسب لحرارة أقل.
+  </p>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">📏 المقادير <span class="recipe-title-sub">Dosi</span></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">ماء</div><div class="stat-value">٥ ل</div></div>
+        <div class="stat"><div class="stat-label">طحين</div><div class="stat-value">٩ كغ</div></div>
+        <div class="stat"><div class="stat-label">خميرة</div><div class="stat-value">٢٠ غ</div></div>
+        <div class="stat"><div class="stat-label">ملح</div><div class="stat-value">٢٢٥ غ</div></div>
+        <div class="stat"><div class="stat-label">زيت</div><div class="stat-value">٢٢٥ مل</div></div>
+      </div>
+      <div class="recipe-title">👨‍🍳 طريقة التحضير</div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text">ضع الماء البارد في العجانة وأضف ٢٠ غ خميرة</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text">شغّل العجانة في السرعة الأولى وأضف الطحين على ٣ مراحل (٣ + ٣ + ٣ كغ)</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text">عند تماسك العجينة أضف ٢٢٥ غ ملح واتركها تدور ٣ دقائق</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text">أخيراً أضف الزيت واتركه يدخل في العجينة تماماً ويصبح غير مرئي</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text">شكّل كرات ٢٥٠ غ وضعها في صناديق أو أكياس بلاستيكية وأدخلها الثلاجة</div></li>
+        <li class="step"><div class="step-num">VI</div><div class="step-text">اليوم التالي: أخرجها ساعتين قبل العمل في درجة حرارة الغرفة</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">جدول بروتوكول <span class="red">التخمير</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>نوع العجين</th>
+          <th>المرحلة الأولى</th>
+          <th>المرحلة الثانية</th>
+          <th>قبل العمل</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="first">العجين المباشر</td><td>٢٤ ساعة في البراد</td><td>تكوير + ٢٤ ساعة براد</td><td>٣ ساعات في الغرفة</td></tr>
+        <tr><td class="first">البيغا (٤٨ ساعة)</td><td>١٩ ساعة في الغرفة</td><td>٢٤ ساعة في البراد</td><td>ساعة في الغرفة</td></tr>
+        <tr><td class="first">البيغا (٢٤ ساعة)</td><td>١٩ ساعة في الغرفة</td><td>٥ ساعات في الغرفة</td><td>مباشرة</td></tr>
+        <tr><td class="first">عجين الكهربائي</td><td>تكوير مباشر</td><td>٢٤ ساعة في البراد</td><td>٣ ساعات في الغرفة</td></tr>
+      </tbody>
+    </table>
+  </div>
+ 
+  <div class="page-num">— V · Tecniche dell'Impasto —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH6: PIZZA MENU
+═══════════════════════════════════════ -->
+<section class="section section-paper">
+  <div class="section-header">
+    <div class="section-eyebrow">Capitolo Sesto · الفصل السادس</div>
+    <h2 class="section-title">قائمة <span class="accent">البيتزا</span></h2>
+    <div class="ornament-h"><div class="line r"></div><div class="symbol">❋</div><div class="line"></div></div>
+    <p style="max-width:680px;margin:24px auto 0;color:var(--ink-2);font-size:17px;line-height:2;font-family:'Cormorant Garamond',serif;font-style:italic">
+      +٢٥ نوع من البيتزا الإيطالية الأصيلة — كل ما يحتاجه مطعمك ليُقدم قائمة متكاملة.
+    </p>
+  </div>
+ 
+  <h2 class="subtitle">🍕 البيتزا الحمراء <span class="red">— Pizza Rossa</span></h2>
+  <p style="color:var(--ink-2);font-size:15px;margin-bottom:32px">بصلصة الطماطم النابولية</p>
+ 
+  <div class="pizza-grid">
+    <div class="pizza"><div class="pizza-emoji">🍕</div><div class="pizza-content"><div class="pizza-name">Margherita</div><div class="pizza-ing">Salsa pomodoro · Mozzarella · Basilico</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🦃</div><div class="pizza-content"><div class="pizza-name">Prosciutto</div><div class="pizza-ing">Pomodoro · Jambon de dinde · Mozzarella</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🌶️</div><div class="pizza-content"><div class="pizza-name">Diavola</div><div class="pizza-ing">Pomodoro · Salami · Mozzarella</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🐟</div><div class="pizza-content"><div class="pizza-name">Paesana</div><div class="pizza-ing">Pomodoro · Mozzarella · Tonno · Cipolla</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🧀</div><div class="pizza-content"><div class="pizza-name">Quattro Formaggi</div><div class="pizza-ing">Mozzarella · Gorgonzola · Taleggio · Parmesan</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🌱</div><div class="pizza-content"><div class="pizza-name">Quattro Stagioni</div><div class="pizza-ing">Mozzarella · Jambon · Funghi · Carciofi · Olive</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🫒</div><div class="pizza-content"><div class="pizza-name">Capricciosa</div><div class="pizza-ing">Jambon · Funghi · Carciofi · Capperi</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🍍</div><div class="pizza-content"><div class="pizza-name">Hawaïen</div><div class="pizza-ing">Mozzarella · Jambon de dinde · Ananas</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🦐</div><div class="pizza-content"><div class="pizza-name">Scampi</div><div class="pizza-ing">Mozzarella · Gamberetti · Pomodorini</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🌊</div><div class="pizza-content"><div class="pizza-name">Pescatora</div><div class="pizza-ing">Mozzarella · Frutti di mare · Olive</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🥦</div><div class="pizza-content"><div class="pizza-name">Vegetariana</div><div class="pizza-ing">Mozzarella · Peperoni · Zucchine · Melanzane</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🍆</div><div class="pizza-content"><div class="pizza-name">Parmigiana</div><div class="pizza-ing">Mozzarella · Melanzane · Parmesan · Basilico</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🐃</div><div class="pizza-content"><div class="pizza-name">Bufalina</div><div class="pizza-ing">Bufala · Pomodorini · Basilico</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">⚓</div><div class="pizza-content"><div class="pizza-name">Napolitana</div><div class="pizza-ing">Mozzarella · Acciughe · Capperi · Olive</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">👑</div><div class="pizza-content"><div class="pizza-name">Regina</div><div class="pizza-ing">Jambon de dinde · Mozzarella · Funghi</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🔥</div><div class="pizza-content"><div class="pizza-name">Calabrese</div><div class="pizza-ing">Salami · Mozzarella · Nduja · Cipolla</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🍗</div><div class="pizza-content"><div class="pizza-name">Pollo</div><div class="pizza-ing">Mozzarella · Pollo · Cipolla</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🍄</div><div class="pizza-content"><div class="pizza-name">Funghi</div><div class="pizza-ing">Mozzarella · Funghi · Cipolla</div></div></div>
+    <div class="pizza"><div class="pizza-emoji">🫧</div><div class="pizza-content"><div class="pizza-name">Calzone Classico</div><div class="pizza-ing">Jambon · Mozzarella · Funghi · Uovo</div></div></div>
+  </div>
+ 
+  <div style="margin-top:80px;padding:60px;background:linear-gradient(135deg,var(--cream),var(--cream-2));border:1px solid var(--border);border-radius:4px;position:relative;overflow:hidden;box-shadow:var(--shadow)">
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(to right,var(--green),#fff,var(--red))"></div>
+    <h2 class="subtitle" style="margin-top:0">🤍 البيتزا البيضاء <span class="red">— Pizza Bianca</span></h2>
+    <p style="color:var(--ink-2);font-size:15px;margin-bottom:32px;font-family:'Cormorant Garamond',serif;font-style:italic">بدون صلصة طماطم — تعتمد على الكريمة الفاخرة والصلصات الخاصة. مناسبة جداً للقائمة الراقية.</p>
+    <div class="pizza-grid">
+      <div class="pizza" style="background:#fff"><div class="pizza-emoji">🌿</div><div class="pizza-content"><div class="pizza-name">Mortadella Pistacchio</div><div class="pizza-ing">Mozzarella · Mortadella · Burrata · Pistacchio</div></div></div>
+      <div class="pizza" style="background:#fff"><div class="pizza-emoji">🍄</div><div class="pizza-content"><div class="pizza-name">Tartufo</div><div class="pizza-ing">Crema + Salsa Tartufo · Jambon · Mozzarella</div></div></div>
+      <div class="pizza" style="background:#fff"><div class="pizza-emoji">🍣</div><div class="pizza-content"><div class="pizza-name">Salmone</div><div class="pizza-ing">Crème fraîche · Mozzarella · Salmone</div></div></div>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle" style="margin-top:80px">طريقة <span class="red">صنع البيتزا</span></h2>
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">👨‍🍳 خطوة بخطوة</div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text"><strong>أخرج كرة العجين:</strong> ضع دقيق السميد حولها في الصندوق، أدخل أداة الـ Coupe-pâte من الأسفل وارفعها بلطف</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text"><strong>افتح العجينة:</strong> اضغط بأصابعك من الوسط دون لمس الأطراف لتبقى منتفخة</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text"><strong>مدّدها:</strong> كبّر العجينة بيدك اليمنى في الوسط واليسرى على الطرف — ارفعها فوق قبضة اليدين وافتحها</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text"><strong>أضف الصلصة:</strong> ضع صلصة الطماطم في الوسط ودوّرها بشكل دائري</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text"><strong>أضف المكونات:</strong> ضع الجبن أولاً ثم المكونات فوقه</div></li>
+        <li class="step"><div class="step-num">VI</div><div class="step-text"><strong>اخبزها:</strong> ارفع البيتزا بالمجرفة (pala) وضعها في الفرن — ٦٠-٩٠ ثانية فقط عند ٤٥٠ درجة</div></li>
+        <li class="step"><div class="step-num">VII</div><div class="step-text"><strong>أكملها:</strong> أخرجها وأضف المكونات النيئة (ريحان، جرجير، برشوتو...) ثم قدّمها فوراً</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <div class="page-num">— VI · Il Menu delle Pizze —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH7: PASTA
+═══════════════════════════════════════ -->
+<section class="section">
+  <div class="chapter-intro">
+    <div class="illustration-box">
+      <!-- Pasta plate SVG -->
+      <svg viewBox="0 0 400 440">
+        <rect width="400" height="440" fill="url(#bg1)"/>
+ 
+        <!-- Wooden table -->
+        <rect x="0" y="320" width="400" height="120" fill="#8B6B4A"/>
+        <line x1="0" y1="320" x2="400" y2="320" stroke="#5C4520" stroke-width="2"/>
+ 
+        <!-- Plate shadow -->
+        <ellipse cx="200" cy="290" rx="160" ry="40" fill="#3D2817" opacity=".4"/>
+        <!-- Plate -->
+        <ellipse cx="200" cy="280" rx="160" ry="38" fill="#fff"/>
+        <ellipse cx="200" cy="278" rx="155" ry="35" fill="#FAF5E6"/>
+        <ellipse cx="200" cy="278" rx="140" ry="30" fill="#fff"/>
+ 
+        <!-- Pasta (spaghetti) - mound -->
+        <ellipse cx="200" cy="265" rx="115" ry="35" fill="#F4C76A"/>
+ 
+        <!-- Pasta strands - swirling -->
+        <g fill="none" stroke="#F4C76A" stroke-width="3" stroke-linecap="round">
+          <path d="M 110 270 Q 150 240 200 250 Q 250 260 290 240"/>
+          <path d="M 120 280 Q 170 250 220 255 Q 270 265 285 250"/>
+          <path d="M 130 290 Q 180 270 230 260 Q 270 255 290 270"/>
+          <path d="M 140 285 Q 190 265 240 270 Q 280 280 280 290"/>
+          <path d="M 150 275 Q 200 245 250 250 Q 280 260 285 265"/>
+        </g>
+        <g fill="none" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 115 275 Q 165 245 215 250"/>
+          <path d="M 125 285 Q 175 255 225 260"/>
+          <path d="M 135 280 Q 185 250 235 255"/>
+          <path d="M 145 290 Q 195 270 245 275"/>
+        </g>
+ 
+        <!-- Bolognese sauce on top -->
+        <ellipse cx="200" cy="250" rx="60" ry="18" fill="#A8202E"/>
+        <ellipse cx="200" cy="248" rx="55" ry="15" fill="#C8333F"/>
+        <!-- Meat bits -->
+        <g fill="#7E1620">
+          <circle cx="180" cy="248" r="3"/>
+          <circle cx="200" cy="245" r="3.5"/>
+          <circle cx="220" cy="250" r="3"/>
+          <circle cx="190" cy="252" r="2.5"/>
+          <circle cx="210" cy="247" r="2.5"/>
+        </g>
+ 
+        <!-- Basil leaves on top -->
+        <g fill="#2D5F3F">
+          <ellipse cx="180" cy="240" rx="10" ry="5" transform="rotate(-20 180 240)"/>
+          <ellipse cx="220" cy="245" rx="9" ry="5" transform="rotate(15 220 245)"/>
+        </g>
+ 
+        <!-- Parmesan grated -->
+        <g fill="#F4C76A" opacity=".9">
+          <circle cx="170" cy="240" r="1.5"/>
+          <circle cx="190" cy="238" r="1.5"/>
+          <circle cx="210" cy="240" r="1.5"/>
+          <circle cx="230" cy="245" r="1.5"/>
+          <circle cx="200" cy="235" r="1.5"/>
+        </g>
+ 
+        <!-- Fork on the side -->
+        <g transform="translate(310,280) rotate(20)">
+          <rect x="0" y="0" width="6" height="60" fill="#999"/>
+          <rect x="-3" y="-15" width="3" height="20" fill="#999"/>
+          <rect x="0" y="-15" width="3" height="20" fill="#999"/>
+          <rect x="3" y="-15" width="3" height="20" fill="#999"/>
+          <rect x="6" y="-15" width="3" height="20" fill="#999"/>
+        </g>
+ 
+        <!-- Italian script -->
+        <text x="200" y="100" font-family="Italianno,cursive" font-size="42" fill="#A8202E" text-anchor="middle">La Pasta</text>
+        <line x1="120" y1="115" x2="280" y2="115" stroke="#B8924F" stroke-width="1"/>
+        <text x="200" y="140" font-family="Cormorant Garamond,serif" font-size="14" fill="#3D2F22" text-anchor="middle" font-style="italic">Bolognese</text>
+      </svg>
+      <div class="caption">— Pasta alla Bolognese —</div>
+    </div>
+    <div class="chapter-info">
+      <div class="chapter-num">VII</div>
+      <span class="chapter-label">Capitolo Settimo · الفصل السابع</span>
+      <h2 class="chapter-title">وصفات <span class="accent">المعكرونة</span><span class="script">La Pasta</span></h2>
+      <p class="chapter-lead italic">
+        المعكرونة تُضاعف إيرادات مطعمك وتُوسّع قاعدة عملائك.
+      </p>
+      <p class="chapter-lead">
+        أصناف الباستا الأساسية التي يحتاجها كل مطعم بيتزا إيطالي حقيقي.
+      </p>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">🍝 الصلصة الكلاسيكية <span class="red">— Bolognese</span></h2>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">🍅 المكونات <span class="recipe-title-sub">Ingredienti</span></div>
+      <div class="amount-item"><div class="dot"></div>٥٠٠ غ لحم مفروم</div>
+      <div class="amount-item"><div class="dot"></div>بصلة + جزرة + كرافس</div>
+      <div class="amount-item"><div class="dot"></div>فصين ثوم + معدنوس</div>
+      <div class="amount-item"><div class="dot"></div>٢ كغ صلصة طماطم</div>
+      <div class="amount-item"><div class="dot"></div>ملح + فلفل أسود + ورق رند</div>
+    </div>
+  </div>
+ 
+  <div class="recipe">
+    <div class="recipe-content">
+      <div class="recipe-title">👨‍🍳 طريقة تحضير الصلصة <span class="recipe-title-sub">تُحفظ ليوم العمل</span></div>
+      <ol class="steps">
+        <li class="step"><div class="step-num">I</div><div class="step-text">قطّع البصل والجزر والكرافس والثوم والمعدنوس قطع صغيرة جداً</div></li>
+        <li class="step"><div class="step-num">II</div><div class="step-text">سخّن ٤ ملاعق زيت في قدر على نار هادئة وقلِّ الخضار حتى تذبل</div></li>
+        <li class="step"><div class="step-num">III</div><div class="step-text">أضف ٥٠٠ غ لحم مفروم مع قليل من الماء حتى يتفتت اللحم تماماً</div></li>
+        <li class="step"><div class="step-num">IV</div><div class="step-text">عندما يتقلى اللحم جيداً أضف ٢ كغ صلصة طماطم وحرّك جيداً</div></li>
+        <li class="step"><div class="step-num">V</div><div class="step-text">أضف نصف لتر ماء + الملح + الفلفل الأسود + ورق الرند</div></li>
+        <li class="step"><div class="step-num">VI</div><div class="step-text">اتركها على نار هادئة حتى يختفي الماء وتتكثف الصلصة</div></li>
+        <li class="step"><div class="step-num">VII</div><div class="step-text">قسّمها في أكواب ورقية وضعها في الفريزر لاستخدامها عند الطلب</div></li>
+      </ol>
+    </div>
+  </div>
+ 
+  <div class="success-box">
+    <h4>🍽️ كيفية تقديم الطبق للعميل</h4>
+    <div class="success-item">ضع مقلاة على نار هادئة مع ملعقتين زيت، أضف كوباً من صلصة البولونياز المحضّرة</div>
+    <div class="success-item">اتركها تتسخّن ثم أضف قليل ماء وكمية المعكرونة المسلوقة</div>
+    <div class="success-item">حرّكها حتى تتشرب الصلصة، ضعها في طبق وأضف الجبن المبشور</div>
+  </div>
+ 
+  <h2 class="subtitle">أنواع <span class="red">المعكرونة الأخرى</span></h2>
+ 
+  <div class="cards-grid">
+    <div class="mini-card">
+      <span class="card-icon">🍗</span>
+      <div class="card-title">Pollo Funghi</div>
+      <p class="card-body">قطع صدر دجاج + شامبينيون. قلِّها مع ملح وفلفل وكريمة الطهي. أضف المعكرونة حتى تنشف الصلصة.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🦐</span>
+      <div class="card-title">Scampi</div>
+      <p class="card-body">جمبري + كوسة مقطعة. قلِّها مع ملح وفلفل وكريمة الطهي. أضف المعكرونة. للأذواق الراقية.</p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">🌊</span>
+      <div class="card-title">Frutti di Mare</div>
+      <p class="card-body">مجموعة فواكه البحر مع زيت زيتون. أضف صلصة الطماطم بدل الكريمة. أضف المعكرونة حتى تنشف.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🍅</span>
+      <div class="card-title">Pomodorini Basilico</div>
+      <p class="card-body">طماطم كرزية مع ثوم وزيت زيتون. أضف ريحان طازج. أضف المعكرونة. خفيفة وصيفية.</p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">🥓</span>
+      <div class="card-title">Carbonara</div>
+      <p class="card-body">صفار البيض + باركماجانو + لحم مدخن + فلفل أسود. لا كريمة! الحرارة من المعكرونة تطبخ الصلصة.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🧀</span>
+      <div class="card-title">Lasagna</div>
+      <p class="card-body">طبقات من ورق اللازانيا + صلصة بولونياز + بشاميل + موزاريلا وبارميزان. تُخبز في الفرن.</p>
+    </div>
+  </div>
+ 
+  <div class="page-num">— VII · Ricette della Pasta —</div>
+</section>
+ 
+<div class="divider"><div class="line r"></div><div class="diamond"></div><div class="center">~</div><div class="diamond"></div><div class="line"></div></div>
+ 
+<!-- ═══════════════════════════════════════
+     CH8: WORK & SUCCESS
+═══════════════════════════════════════ -->
+<section class="section section-paper">
+  <div class="chapter-intro">
+    <div class="chapter-info">
+      <div class="chapter-num">VIII</div>
+      <span class="chapter-label">Capitolo Ottavo · الفصل الثامن</span>
+      <h2 class="chapter-title">العمل <span class="accent">والنجاح</span><span class="script">Il Successo</span></h2>
+      <p class="chapter-lead italic">
+        كيف تُحضّر مطبخك لكل يوم عمل، وما هي الأسرار التي تجعل العميل يعود.
+      </p>
+      <p class="chapter-lead">
+        هذا هو الفصل الأهم — فالنجاح ليس في وصفة واحدة بل في تنظيم يومي ودائم يبني سمعة المطعم على المدى الطويل.
+      </p>
+    </div>
+    <div class="illustration-box">
+      <!-- Chef working SVG -->
+      <svg viewBox="0 0 400 440">
+        <rect width="400" height="440" fill="url(#bg1)"/>
+ 
+        <!-- Kitchen counter -->
+        <rect x="0" y="280" width="400" height="160" fill="#C5C5C5"/>
+        <line x1="0" y1="280" x2="400" y2="280" stroke="#999" stroke-width="2"/>
+ 
+        <!-- Chef silhouette -->
+        <!-- Body -->
+        <ellipse cx="200" cy="350" rx="55" ry="60" fill="#fff"/>
+        <rect x="160" y="320" width="80" height="100" fill="#fff"/>
+        <!-- Buttons -->
+        <circle cx="200" cy="335" r="3" fill="#A8202E"/>
+        <circle cx="200" cy="355" r="3" fill="#A8202E"/>
+        <circle cx="200" cy="375" r="3" fill="#A8202E"/>
+        <!-- Neckerchief -->
+        <path d="M 175 290 L 200 305 L 225 290 L 225 315 L 175 315 Z" fill="#A8202E"/>
+ 
+        <!-- Head -->
+        <circle cx="200" cy="250" r="28" fill="#E8C39C"/>
+        <!-- Hair -->
+        <ellipse cx="200" cy="240" rx="22" ry="8" fill="#3D2817"/>
+ 
+        <!-- Chef hat -->
+        <ellipse cx="200" cy="220" rx="35" ry="10" fill="#fff"/>
+        <path d="M 175 220 Q 165 180 200 175 Q 235 180 225 220 Z" fill="#fff"/>
+        <ellipse cx="200" cy="190" rx="12" ry="8" fill="#fff"/>
+        <ellipse cx="185" cy="195" rx="8" ry="6" fill="#fff"/>
+        <ellipse cx="215" cy="195" rx="8" ry="6" fill="#fff"/>
+ 
+        <!-- Eyes -->
+        <circle cx="190" cy="252" r="2" fill="#1A1410"/>
+        <circle cx="210" cy="252" r="2" fill="#1A1410"/>
+        <!-- Mustache -->
+        <path d="M 185 263 Q 200 268 215 263" stroke="#3D2817" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Smile -->
+        <path d="M 192 270 Q 200 275 208 270" stroke="#1A1410" stroke-width="1.5" fill="none"/>
+ 
+        <!-- Arms holding pizza paddle -->
+        <rect x="140" y="320" width="20" height="60" fill="#fff" transform="rotate(-15 150 350)"/>
+        <rect x="240" y="320" width="20" height="60" fill="#fff" transform="rotate(15 250 350)"/>
+ 
+        <!-- Pizza paddle -->
+        <rect x="80" y="305" width="80" height="3" fill="#5C4520" transform="rotate(-15 120 306)"/>
+        <ellipse cx="70" cy="298" rx="22" ry="15" fill="#E8D4A8" transform="rotate(-15 70 298)"/>
+ 
+        <!-- Mini pizza on paddle -->
+        <ellipse cx="70" cy="298" rx="18" ry="11" fill="#D9923C" transform="rotate(-15 70 298)"/>
+        <ellipse cx="70" cy="298" rx="14" ry="8" fill="#A8202E" transform="rotate(-15 70 298)"/>
+ 
+        <!-- Stars/sparkles -->
+        <g fill="#B8924F">
+          <text x="100" y="100" font-size="20">✦</text>
+          <text x="300" y="120" font-size="16">✦</text>
+          <text x="60" y="200" font-size="14">✦</text>
+          <text x="330" y="220" font-size="18">✦</text>
+        </g>
+ 
+        <!-- Italian script -->
+        <text x="200" y="80" font-family="Italianno,cursive" font-size="36" fill="#A8202E" text-anchor="middle">Il Pizzaiolo</text>
+      </svg>
+      <div class="caption">— L'Arte del Pizzaiolo —</div>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">جدول التحضير <span class="red">اليومي</span></h2>
+  <p style="color:var(--ink-2);font-size:16px;line-height:2;margin-bottom:32px;max-width:780px;font-family:'Cormorant Garamond',serif;font-style:italic">
+    التنظيم هو الفرق بين مطعم ناجح ومطعم فاشل. هذا هو الجدول اليومي الذي يجب اتباعه.
+  </p>
+ 
+  <div class="cards-grid">
+    <div class="mini-card">
+      <span class="card-icon">🌅</span>
+      <div class="card-title">الصباح · ٣-٤ ساعات قبل الفتح</div>
+      <p class="card-body">أخرج العجين من الثلاجة وضعه في مكان دافئ. تحقق من الصلصات والمكونات. جهّز طاولة التحضير المبردة.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🕐</span>
+      <div class="card-title">قبل ساعة من الفتح</div>
+      <p class="card-body">سخّن الفرن — فرن الحطب يحتاج ٩٠ دقيقة ليصل لـ ٤٥٠ درجة. جهّز جميع المكونات في الحوض.</p>
+    </div>
+    <div class="mini-card">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">أثناء الـ Service</div>
+      <p class="card-body">الترتيب والسرعة أساسيان. شيف واحد للعجين، آخر للفرن. لا تُخرج العجين أكثر مما تحتاج في ساعة.</p>
+    </div>
+    <div class="mini-card green">
+      <span class="card-icon">🌙</span>
+      <div class="card-title">نهاية اليوم</div>
+      <p class="card-body">اعجن عجين اليوم التالي. نظّف الفرن بالفرشاة النحاسية. سجّل ما نفد لتشتريه غداً.</p>
+    </div>
+  </div>
+ 
+  <h2 class="subtitle">أسرار النجاح <span class="red">طويل المدى</span></h2>
+ 
+  <div class="success-box">
+    <h4>✅ ما يجعل المطعم يستمر وينجح</h4>
+    <div class="success-item"><strong>الثبات في الجودة</strong> — العميل يتوقع نفس الطعم في كل زيارة. لا تُغيّر الوصفات بشكل عشوائي</div>
+    <div class="success-item"><strong>التدريب المستمر للطاقم</strong> — شيف جيد يُساوي عشرة إعلانات. استثمر في تدريب فريقك</div>
+    <div class="success-item"><strong>الاستماع لآراء العملاء</strong> — ريفيو سلبي واحد تعامل معه بجدية أفضل من ١٠ إعلانات</div>
+    <div class="success-item"><strong>التسويق بالصور الحقيقية</strong> — صور احترافية للبيتزا على انستغرام تجلب زبائن جدد كل يوم</div>
+    <div class="success-item"><strong>إدارة المخزون بذكاء</strong> — احسب ما تحتاجه يومياً وتفادى الهدر</div>
+    <div class="success-item"><strong>بناء علاقة مع الموردين</strong> — مورد موثوق للمكونات الإيطالية الأصيلة هو نصف النجاح</div>
+    <div class="success-item"><strong>الابتكار المدروس</strong> — أضف ١-٢ نوع موسمي كل ربع سنة لتجديد الاهتمام</div>
+  </div>
+ 
+  <div class="tip">
+    <h4>⚠️ أخطاء قاتلة يجب تجنبها</h4>
+    <div class="tip-item"><strong>تخفيض جودة المكونات لتوفير المال</strong> — العميل يلاحظ والسمعة تنهار بسرعة</div>
+    <div class="tip-item"><strong>إهمال النظافة في المطبخ</strong> — مفتش صحي واحد قد يُغلق مطعمك</div>
+    <div class="tip-item"><strong>التوسع السريع قبل ترسيخ الفرع الأول</strong> — كثير من المطاعم تفلس بهذه الطريقة</div>
+    <div class="tip-item"><strong>عدم تتبع الأرقام</strong> — أنت تطير بدون بوصلة إذا لم تعرف مبيعاتك يومياً</div>
+    <div class="tip-item"><strong>تجاهل التسويق الرقمي</strong> — مطعم بدون انستغرام مثل مطعم بدون لافتة</div>
+  </div>
+ 
+  <div class="quote">
+    <span class="quote-mark">"</span>
+    ٨٠٪ من إيراداتك ستأتي من ٢٠٪ من قائمتك. لا تُحاول أن تكون كل شيء لكل الناس — تخصص في ١٠-١٥ نوع بيتزا تتقنها تماماً، أفضل من ٤٠ نوع متوسطة الجودة.
+  </div>
+ 
+  <div class="page-num">— VIII · Il Lavoro e il Successo —</div>
+</section>
+ 
+<!-- ═══════════════════════════════════════
+     BACK COVER
+═══════════════════════════════════════ -->
+<section class="cover" style="min-height:80vh">
+  <div class="cover-bg-pattern"></div>
+  <div class="cover-frame"></div>
+  <svg class="corner-orn tl" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+  </svg>
+  <svg class="corner-orn tr" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+  </svg>
+  <svg class="corner-orn bl" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+  </svg>
+  <svg class="corner-orn br" viewBox="0 0 60 60" fill="none">
+    <path d="M0 0 L60 0 L60 4 L4 4 L4 60 L0 60 Z" fill="#B8924F"/>
+    <circle cx="12" cy="12" r="3" fill="#A8202E"/>
+  </svg>
+ 
+  <div class="cover-inner">
+    <div class="cover-italian-flag"><span></span><span></span><span></span></div>
+    <div class="cover-eyebrow">Che il Viaggio Abbia Inizio</div>
+    <div class="cover-script">Buon Viaggio</div>
+    <h1 class="cover-title" style="font-size:clamp(40px,5vw,64px)">رحلتك<br><span class="red">بدأت الآن</span></h1>
+    <div class="cover-divider">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+    <p class="cover-tagline">كل ما تحتاجه أصبح في يديك</p>
+    <p class="cover-description">
+      الفكرة · المعدات · المكونات · الوصفات<br>
+      تقنيات العجين · قائمة الطعام · أسرار النجاح
+    </p>
+ 
+    <div class="quote" style="margin:30px auto;max-width:480px">
+      <span class="quote-mark">"</span>
+      النجاح في المطعم لا يأتي بالحظ — يأتي بالتحضير الجيد، والمكونات الأصيلة، وحب الحرفة. الآن لديك كل ما تحتاجه. الخطوة التالية لك.
+    </div>
+ 
+    <div class="cover-author">
+      <div class="cover-author-label">تأليف</div>
+      <div class="cover-author-name">الشيف أمين</div>
+    </div>
+  </div>
+</section>
+ 
+</body>
+</html>
+ 
