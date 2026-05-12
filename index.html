@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-   <script>
-  // كلمة المرور
-  var correctPassword = "napoli2026"; // غيّرها لما تريد
-  
-  // عند فتح الموقع
-  window.onload = function() {
-    var enteredPassword = prompt("أدخل كلمة المرور:");
-    if (enteredPassword !== correctPassword) {
-      document.body.innerHTML = "<h1 style='text-align:center;color:#C9A227;margin-top:20%;'>غير مصرح لك بالدخول</h1>";
-    }
-  };
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المطعم الإيطالي · دليل الشيف الفاخر</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Italianno&display=swap" rel="stylesheet">
 <style>
 :root{
   --red:#A8202E; --red-deep:#7E1620; --red-soft:#C8333F;
@@ -32,6 +15,76 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
+   <style>
+  /* إخفاء كل الموقع */
+  body { display: none !important; }
+  
+  /* إظهار نموذج كلمة المرور */
+  .login-screen {
+    display: flex !important;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #1A1208;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999999;
+  }
+  
+  .login-screen input {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: 2px solid #C9A227;
+    background: #2C1F0E;
+    color: #FAF6EE;
+    border-radius: 8px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .login-screen button {
+    padding: 12px 30px;
+    background: #C9A227;
+    color: #1A1208;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .login-screen h2 {
+    color: #C9A227;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+  }
+</style>
+
+<!-- نموذج كلمة المرور -->
+<div class="login-screen" id="loginScreen">
+  <h2>Napolitana Chef</h2>
+  <p style="color:#FAF6EE;margin-bottom:20px;">أدخل كلمة المرور</p>
+  <input type="password" id="passwordInput" placeholder="كلمة المرور">
+  <button onclick="checkPassword()">دخول</button>
+  <p id="errorMsg" style="color:#ff4444;margin-top:10px;"></p>
+</div>
+
+<script>
+  function checkPassword() {
+    var password = document.getElementById('passwordInput').value;
+    if (password === 'napoli2026') {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.body.style.display = 'block';
+    } else {
+      document.getElementById('errorMsg').innerText = 'كلمة المرور خاطئة';
+    }
+  }
+  
+  // السماح بالضغط على Enter
+  document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+</script>
   font-family:'Tajawal',sans-serif;
   background:var(--cream);
   color:var(--ink);
