@@ -3137,4 +3137,15 @@ td.first{
  
 </body>
 </html>
- 
+ <script>
+  // كلمة المرور
+  var correctPassword = "napoli2026"; // غيّرها لما تريد
+  
+  // عند فتح الموقع
+  window.onload = function() {
+    var enteredPassword = prompt("أدخل كلمة المرور:");
+    if (enteredPassword !== correctPassword) {
+      document.body.innerHTML = "<h1 style='text-align:center;color:#C9A227;margin-top:20%;'>غير مصرح لك بالدخول</h1>";
+    }
+  };
+</script>
